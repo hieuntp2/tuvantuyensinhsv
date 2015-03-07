@@ -1,0 +1,120 @@
+﻿@model IEnumerable<WebApplication1.Models.MBTI>
+
+@{
+    ViewBag.Title = "MBTI-Ngành/Nghề";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<div class="col-md-4 col-md-offset-4">
+    <div class="panel panel-default">
+        <div class="panel-body" style="padding: 15px; margin-top: 0px; padding-top: 0px; padding-bottom: 0px;">
+            <h2 style="margin-top: 10px;">Phân loại tính cách MBTI</h2>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default col-lg-12">
+    <!-- /.panel-heading -->
+    <div class="panel-body">
+  
+
+        <div class="panel-body" id="_langViet">
+            
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs">
+                <li class="active" id="li_step0">
+                    <a href="#intro" data-toggle="tab">0. Giới thiệu</a>
+                </li>
+                <li id="li_step1">
+                    <a href="#home" data-toggle="tab">1. Xu hướng Tự nhiên</a>
+                </li>
+                <li id="li_step2">
+                    <a href="#profile" data-toggle="tab">2. Tìm hiểu và Nhận thức</a>
+                </li>
+                <li id="li_step3">
+                    <a href="#messages" data-toggle="tab">3. Quyết định và chọn lựa</a>
+                </li>
+                <li id="li_step4">
+                    <a href="#settings" data-toggle="tab">4. Cách thức và Hành động</a>
+                </li>
+            </ul>
+            <br />
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div class="tab-pane fade in active" id="intro">
+                    @Html.Partial("~/views/mbtis/_introductMBTI.cshtml")
+                </div>
+                <div class="tab-pane fade" id="home">
+                    @Html.Partial("~/views/mbtis/_extraversionintroversion.cshtml")
+                </div>
+                <div class="tab-pane fade" id="profile">
+                    @Html.Partial("~/views/mbtis/_SensingINtution.cshtml")
+                </div>
+                <div class="tab-pane fade" id="messages">
+                    @Html.Partial("~/views/mbtis/_ThinkingFeeling.cshtml")
+                </div>
+                <div class="tab-pane fade" id="settings">
+                    @Html.Partial("~/views/mbtis/_JudgmentPerception.cshtml")
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-md-offset-5">
+                    <button onclick="call_EI()" id="result_step_1" value="" style="width:50px; height:50px; opacity"></button>
+                    <button onclick="call_SN()" id="result_step_2" value="" style="width:50px; height:50px;"></button>
+                    <button onclick="call_TF()" id="result_step_3" value="" style="width:50px; height:50px;"></button>
+                    <button onclick="call_JP()" id="result_step_4" value="" style="width:50px; height:50px;"></button>
+                </div>
+
+                <div class="col-md-4 col-md-offset-5">
+                    <button value="" style="width:210px; height:50px;" onclick="_fgetmbti()">Kết quả</button>
+                </div>
+            </div>
+        </div>
+      
+        <p style="float:right;">(Nguồn: www.myersbriggs.org và www.tgm.vn)</p>
+    </div>
+    <!-- /.panel-body -->
+</div>
+
+<br />
+
+<div class="row col-lg-12">
+    <div id="_imtbi_result">
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="_mymatchModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="_mymatchModalHeader"></h4>
+            </div>
+            <div class="modal-body">
+                <label>Nhập điểm thi thử 3 môn, hoặc điểm dự kiến của bạn</label>
+                <div class="form-group input-group">
+                    <input type="number" class="form-control" id="_match">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" onclick="_flocdiem()">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+                <input id="_idmodelnganh" type="hidden" />
+            </div>
+            <div class="modal-body" id="_mymatchModalBody">
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                <button type="button" class="btn btn-primary" onclick="fallschool()">Xem thêm trường</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/content/js/mbtiscript.js"></script>

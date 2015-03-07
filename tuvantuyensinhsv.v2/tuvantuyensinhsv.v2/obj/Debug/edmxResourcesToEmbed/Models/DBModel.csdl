@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProjectHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="BaiViet">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TieuDe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NguoiDang" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NgayCapNhat" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Trangthai" Type="Int32" Nullable="false" />
+    <Property Name="Tabs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="RatePosts" Relationship="Self.FK_RatePost_BaiViets" FromRole="BaiViets" ToRole="RatePost" />
+  </EntityType>
+  <EntityType Name="InternalMessage">
+    <Key>
+      <PropertyRef Name="From" />
+      <PropertyRef Name="To" />
+      <PropertyRef Name="DateCreate" />
+    </Key>
+    <Property Name="From" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="To" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Mesage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="KhoiThi">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Ten" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="MBTI">
+    <Key>
+      <PropertyRef Name="idMBTI" />
+    </Key>
+    <Property Name="idMBTI" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Tags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GioiThieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Nganh">
+    <Key>
+      <PropertyRef Name="MaNganh" />
+    </Key>
+    <Property Name="Ten" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaNganh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TruongNganhs" Relationship="Self.FK_TruongNganhs_Nganhs" FromRole="Nganhs" ToRole="TruongNganhs" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Tieude" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Noidung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="userid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Ngaydang" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="RatePost">
+    <Key>
+      <PropertyRef Name="IDBaiViet" />
+      <PropertyRef Name="IDUsername" />
+    </Key>
+    <Property Name="IDBaiViet" Type="Int32" Nullable="false" />
+    <Property Name="IDUsername" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Like" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="BaiViet" Relationship="Self.FK_RatePost_BaiViets" FromRole="RatePost" ToRole="BaiViets" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SystemInformation">
+    <Key>
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="value" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SystemLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LogMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="ThanhPho">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Ten" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Truongs" Relationship="Self.FK_Truong_ThanhPho" FromRole="ThanhPhoes" ToRole="Truongs" />
+  </EntityType>
+  <EntityType Name="TruongNganh">
+    <Key>
+      <PropertyRef Name="MaTruong" />
+      <PropertyRef Name="MaNganh" />
+      <PropertyRef Name="KhoiThi" />
+    </Key>
+    <Property Name="MaTruong" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="MaNganh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="KhoiThi" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Diem1" Type="Double" />
+    <Property Name="Diem2" Type="Double" />
+    <Property Name="Diem3" Type="Double" />
+    <Property Name="NgayCapNhat" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Nganh" Relationship="Self.FK_TruongNganhs_Nganhs" FromRole="TruongNganhs" ToRole="Nganhs" />
+    <NavigationProperty Name="Truong" Relationship="Self.FK_TruongNganhs_Truongs" FromRole="TruongNganhs" ToRole="Truongs" />
+  </EntityType>
+  <EntityType Name="Truong">
+    <Key>
+      <PropertyRef Name="MaTruong" />
+    </Key>
+    <Property Name="Ten" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Website" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IDThanhPho" Type="Int32" Nullable="false" />
+    <Property Name="MaTruong" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LoaiTruong" Type="String" MaxLength="2" FixedLength="true" Unicode="false" />
+    <Property Name="linkLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DeAnTuyenSInh" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="GioiThieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ThanhPho" Relationship="Self.FK_Truong_ThanhPho" FromRole="Truongs" ToRole="ThanhPhoes" />
+    <NavigationProperty Name="TruongNganhs" Relationship="Self.FK_TruongNganhs_Truongs" FromRole="Truongs" ToRole="TruongNganhs" />
+  </EntityType>
+  <Association Name="FK_RatePost_BaiViets">
+    <End Role="BaiViets" Type="Self.BaiViet" Multiplicity="1" />
+    <End Role="RatePost" Type="Self.RatePost" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiViets">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="RatePost">
+        <PropertyRef Name="IDBaiViet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TruongNganhs_Nganhs">
+    <End Role="Nganhs" Type="Self.Nganh" Multiplicity="1" />
+    <End Role="TruongNganhs" Type="Self.TruongNganh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nganhs">
+        <PropertyRef Name="MaNganh" />
+      </Principal>
+      <Dependent Role="TruongNganhs">
+        <PropertyRef Name="MaNganh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Truong_ThanhPho">
+    <End Role="ThanhPhoes" Type="Self.ThanhPho" Multiplicity="1" />
+    <End Role="Truongs" Type="Self.Truong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ThanhPhoes">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Truongs">
+        <PropertyRef Name="IDThanhPho" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TruongNganhs_Truongs">
+    <End Role="Truongs" Type="Self.Truong" Multiplicity="1" />
+    <End Role="TruongNganhs" Type="Self.TruongNganh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Truongs">
+        <PropertyRef Name="MaTruong" />
+      </Principal>
+      <Dependent Role="TruongNganhs">
+        <PropertyRef Name="MaTruong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProjectHEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BaiViets" EntityType="Self.BaiViet" />
+    <EntitySet Name="InternalMessages" EntityType="Self.InternalMessage" />
+    <EntitySet Name="KhoiThis" EntityType="Self.KhoiThi" />
+    <EntitySet Name="MBTIs" EntityType="Self.MBTI" />
+    <EntitySet Name="Nganhs" EntityType="Self.Nganh" />
+    <EntitySet Name="Questions" EntityType="Self.Question" />
+    <EntitySet Name="RatePosts" EntityType="Self.RatePost" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="SystemInformations" EntityType="Self.SystemInformation" />
+    <EntitySet Name="SystemLogs" EntityType="Self.SystemLog" />
+    <EntitySet Name="ThanhPhoes" EntityType="Self.ThanhPho" />
+    <EntitySet Name="TruongNganhs" EntityType="Self.TruongNganh" />
+    <EntitySet Name="Truongs" EntityType="Self.Truong" />
+    <AssociationSet Name="FK_RatePost_BaiViets" Association="Self.FK_RatePost_BaiViets">
+      <End Role="BaiViets" EntitySet="BaiViets" />
+      <End Role="RatePost" EntitySet="RatePosts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TruongNganhs_Nganhs" Association="Self.FK_TruongNganhs_Nganhs">
+      <End Role="Nganhs" EntitySet="Nganhs" />
+      <End Role="TruongNganhs" EntitySet="TruongNganhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Truong_ThanhPho" Association="Self.FK_Truong_ThanhPho">
+      <End Role="ThanhPhoes" EntitySet="ThanhPhoes" />
+      <End Role="Truongs" EntitySet="Truongs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TruongNganhs_Truongs" Association="Self.FK_TruongNganhs_Truongs">
+      <End Role="Truongs" EntitySet="Truongs" />
+      <End Role="TruongNganhs" EntitySet="TruongNganhs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

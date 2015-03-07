@@ -1,0 +1,58 @@
+﻿@model IEnumerable<WebApplication1.Models.BaiViet>
+
+@{
+    ViewBag.Title = "Index";
+    int counter = 0;
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h3 class="page-header">Bài viết mới gần đây</h3>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+@foreach (var item in Model)
+{
+    if (counter % 3 == 0)
+    {   
+        <div class="row">
+        </div>
+
+    }
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <a href="/BaiViets/Details/@item.ID">
+                    @Html.Raw(item.TieuDe)
+                </a>
+            </div>
+            <div class="panel-body">
+                @if (item.NoiDung.Length >= 100)
+                {
+                 //   @Html.Raw(item.NoiDung.Substring(0, 100)))
+                    <p>
+                        @Html.Raw(HtmlRemoval.StripTagsRegex(item.NoiDung.Substring(0, 100)))
+                    </p>
+                    
+                }
+                else
+                {
+                    @Html.Raw(HtmlRemoval.StripTagsRegex(item.NoiDung))
+                }
+                ...
+            </div>
+            <div class="panel-footer">
+                <span style="color:blue;"> @item.RatePosts.Where(t => t.Like == true).Count()</span> / <span style="color:red;"> @item.RatePosts.Where(t => t.Like == false).Count()</span>
+                <span style="float:right;">@item.NgayCapNhat.Day / @item.NgayCapNhat.Month</span>
+            </div>
+        </div>
+        <!-- /.col-lg-4 -->
+    </div>
+                {
+                    counter += 1;
+
+                }
+
+}
+<!-- /.row -->

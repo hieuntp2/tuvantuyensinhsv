@@ -1,0 +1,63 @@
+﻿@model WebApplication1.Models.BaiViet
+
+@{
+    ViewBag.Title = Model.TieuDe;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Content/js/facebook_comment.js"></script>
+
+<div class="row">
+    <div class="col-lg-2">
+        <div class="col-lg-8">
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <h3>@Model.TieuDe</h3>
+        <hr />
+    </div>
+    <div class="col-lg-3">
+        <div class="col-lg-6">
+        </div>
+    </div>
+   
+</div>
+
+<div class="col-lg-2">
+    @Html.Partial("_ThongTinBaiViet")
+
+    @*Nếu là chủ nhân của bài viết*@
+    @if (User.Identity.Name == Model.AspNetUser.UserName)
+    {
+        Html.RenderPartial("_UserPostControl");       
+    }
+    
+</div>
+
+@*Nội dung*@
+<div class="col-lg-8">
+    <div class="panel-body">
+        @Html.Raw(Model.NoiDung)
+
+        <hr />
+        <h4>Bình luận</h4>
+        <div id="fb-root">
+            @Html.Partial("~/views/error/Loading.cshtml")
+        </div>
+    </div>
+    
+
+</div>
+
+<div class="col-lg-2">
+
+    @Html.Partial("_RatePost_Social", Model)
+
+    @*Nếu là Admin, có quyền phân cấp bài viết*@
+    @if (User.IsInRole("Moderate") || User.IsInRole("Admin"))
+    {
+        Html.RenderPartial("_AdminControlPost",Model);
+    }
+    
+    @Html.Partial("~/views/tabengineserver/_viewtags.cshtml")
+</div>
+

@@ -1,0 +1,69 @@
+﻿<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+    <div class="row">
+        <div class="col-lg-2">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/Home">Project H</a>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <ul class="nav navbar-top-links navbar-right" style="width:100%; margin-top: 9px;margin-bottom: 9px;">
+                <div class="input-group custom-search-form">
+                    <input required type="text" value="@ViewBag.Key" class="form-control" style="margin-left:10px;" placeholder="Tìm kiếm trường, ngành, tỉnh thành" id="Search_Input">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" onclick="Layout_SearchButtonClick()" style="margin-right: 10px; margin-bottom: 0px; z-index:100; ">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+                <!-- /.dropdown -->
+            </ul>
+
+        </div>
+        <div class="col-lg-2">
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown" onclick="fdangnhap()">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw"></i>
+                    </a>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+        </div>
+    </div>
+
+</nav>
+
+@*<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+        <div class="col-lg-2">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/Home">Project H</a>
+            </div>
+        </div>
+        <div class="col-lg-8">
+            <ul class="nav navbar-top-links navbar-right" style="width:100%; margin-top: 9px;margin-bottom: 9px;">
+                <div class="input-group custom-search-form">
+                    <input required type="text" value="@ViewBag.Key" class="form-control" style="margin-left:10px;" placeholder="Tìm kiếm trường, ngành, tỉnh thành" id="Search_Input">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button" onclick="Layout_SearchButtonClick()" style="margin-right: 10px; margin-bottom: 0px; z-index:100; ">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+                <!-- /.dropdown -->
+            </ul>
+
+        </div>
+
+        <div class="col-lg-2">
+            <ul class="nav navbar-top-links navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user fa-fw" onclick="fdangnhap()"></i>
+                    </a>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+        </div>
+    </nav>*@
