@@ -1,4 +1,4 @@
-﻿@model WebApplication1.Models.BaiViet
+﻿@model tuvantuyensinhsv.v2.Models.BaiViet
 @{
     int LikeCount = Model.RatePosts.Where(t => t.Like == true).Count();
     int DislikeCount = Model.RatePosts.Where(t => t.Like == false).Count();

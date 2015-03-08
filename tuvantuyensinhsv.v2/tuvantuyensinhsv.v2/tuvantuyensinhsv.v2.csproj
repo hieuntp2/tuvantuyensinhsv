@@ -227,6 +227,13 @@
     <Compile Include="Models\MBTI.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Metadata\JsonSearchResult.cs" />
+    <Compile Include="Models\Metadata\MetaDataKhoiThi.cs" />
+    <Compile Include="Models\Metadata\MetaDataNganh.cs" />
+    <Compile Include="Models\Metadata\MetaDataThanhPho.cs" />
+    <Compile Include="Models\Metadata\MetaDataTruong.cs" />
+    <Compile Include="Models\Metadata\MetaDataTruongNganh.cs" />
+    <Compile Include="Models\Metadata\SearchKeyResult.cs" />
     <Compile Include="Models\Nganh.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
     </Compile>
@@ -446,9 +453,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />

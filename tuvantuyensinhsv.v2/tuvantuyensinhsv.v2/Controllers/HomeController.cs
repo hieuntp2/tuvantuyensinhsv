@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using WebApplication1.Models;
-namespace WebApplication1.Controllers
+using tuvantuyensinhsv.v2.Models;
+namespace tuvantuyensinhsv.v2.Controllers
 {
     public class HomeController : Controller
     {

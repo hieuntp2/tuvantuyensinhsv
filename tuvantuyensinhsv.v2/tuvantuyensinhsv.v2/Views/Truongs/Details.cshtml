@@ -1,4 +1,4 @@
-﻿@model WebApplication1.Models.Truong
+﻿@model tuvantuyensinhsv.v2.Models.Truong
 <script src="~/Content/js/facebook_comment.js"></script>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,7 +16,7 @@
     int nam2 = nam1 - 1;
     int nam3 = nam1 - 2;
 
-    List<WebApplication1.Models.BaiViet> baiviets = ViewBag.baiviets;
+    List<tuvantuyensinhsv.v2.Models.BaiViet> baiviets = ViewBag.baiviets;
     baiviets = baiviets.OrderByDescending(t => t.NgayCapNhat).ToList();
 }
 

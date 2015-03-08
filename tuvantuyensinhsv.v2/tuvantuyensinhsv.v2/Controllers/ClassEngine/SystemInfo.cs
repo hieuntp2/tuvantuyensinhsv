@@ -4,8 +4,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
-using WebApplication1.Models;
-namespace WebApplication1.Controllers
+using tuvantuyensinhsv.v2.Models;
+namespace tuvantuyensinhsv.v2.Controllers
 {
     public class SystemInfo
     { 

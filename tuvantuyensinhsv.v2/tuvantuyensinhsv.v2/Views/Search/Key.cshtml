@@ -1,14 +1,14 @@
-﻿@model IEnumerable<WebApplication1.Models.Metadata.SearchKeyResult>
+﻿@model IEnumerable<tuvantuyensinhsv.v2.Models.Metadata.SearchKeyResult>
 
 @{
     ViewBag.Title = "Tìm kiếm";
     int nam = DateTime.Now.Year - 1;
     Layout = "~/Views/Shared/_Layout.cshtml";
-    List<WebApplication1.Models.Metadata.SearchKeyResult> truongs = Model.Where(t => t.Loai == "T").ToList();
-    List<WebApplication1.Models.Metadata.SearchKeyResult> nganhs = Model.Where(t => t.Loai == "N").ToList();
-    List<WebApplication1.Models.Metadata.SearchKeyResult> truongnganhs = Model.Where(t => t.Loai == "S").ToList();
-    List<WebApplication1.Models.Metadata.SearchKeyResult> baiviets = Model.Where(t => t.Loai == "B").ToList();
-    List<WebApplication1.Models.Metadata.SearchKeyResult> tinhthanhs = Model.Where(t => t.Loai == "P").ToList();
+    List<tuvantuyensinhsv.v2.Models.Metadata.SearchKeyResult> truongs = Model.Where(t => t.Loai == "T").ToList();
+    List<tuvantuyensinhsv.v2.Models.Metadata.SearchKeyResult> nganhs = Model.Where(t => t.Loai == "N").ToList();
+    List<tuvantuyensinhsv.v2.Models.Metadata.SearchKeyResult> truongnganhs = Model.Where(t => t.Loai == "S").ToList();
+    List<tuvantuyensinhsv.v2.Models.Metadata.SearchKeyResult> baiviets = Model.Where(t => t.Loai == "B").ToList();
+    List<tuvantuyensinhsv.v2.Models.Metadata.SearchKeyResult> tinhthanhs = Model.Where(t => t.Loai == "P").ToList();
 }
 <!-- DataTables CSS -->
 <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css">

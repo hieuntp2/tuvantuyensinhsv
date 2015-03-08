@@ -1,10 +1,10 @@
 ﻿using System;
-using WebApplication1.Models;
+using tuvantuyensinhsv.v2.Models;
 
 using System.Web.Mvc;
 
 
-namespace WebApplication1.Controllers
+namespace tuvantuyensinhsv.v2.Controllers
 {
     class SysLogEngine : Controller
     {

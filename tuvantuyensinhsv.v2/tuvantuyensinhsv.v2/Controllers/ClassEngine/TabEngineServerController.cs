@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebApplication1.Models;
-using WebApplication1.Models.Metadata;
+using tuvantuyensinhsv.v2.Models;
+using tuvantuyensinhsv.v2.Models.Metadata;
 
-namespace WebApplication1.Controllers
+namespace tuvantuyensinhsv.v2.Controllers
 {
     /// <summary>
     /// Phân loại:

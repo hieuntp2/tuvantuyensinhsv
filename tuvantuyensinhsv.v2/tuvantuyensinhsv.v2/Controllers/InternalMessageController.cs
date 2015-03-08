@@ -6,10 +6,10 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using WebApplication1.Models;
+using tuvantuyensinhsv.v2.Models;
 using Microsoft.AspNet.Identity;
 
-namespace WebApplication1.Controllers
+namespace tuvantuyensinhsv.v2.Controllers
 {
     [Authorize]
     public class InternalMessageController : Controller

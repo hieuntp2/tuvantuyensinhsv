@@ -1,7 +1,7 @@
-﻿@model WebApplication1.Models.MBTI
+﻿@model tuvantuyensinhsv.v2.Models.MBTI
 
 @{
-    List<WebApplication1.Controllers.TabOject> list = ViewBag.tags;
+    List<tuvantuyensinhsv.v2.Controllers.TabOject> list = ViewBag.tags;
 }
 
 <div class="col-lg-8">
@@ -26,7 +26,7 @@
         <div class="panel-body">
             @if (list != null && list.Count != 0)
             {                
-                foreach (WebApplication1.Controllers.TabOject item in list)
+                foreach (tuvantuyensinhsv.v2.Controllers.TabOject item in list)
                 {
                     <a onclick="_fgetmatch('@item.ID','@item.Ten')" class="btn btn-default" style="color: black;">@item.Ten</a>
                 }

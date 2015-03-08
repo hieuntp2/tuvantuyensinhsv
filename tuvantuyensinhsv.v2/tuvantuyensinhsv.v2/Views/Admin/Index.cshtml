@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "Index";
-    WebApplication1.Models.ProjectHEntities db = new WebApplication1.Models.ProjectHEntities();
-    List<WebApplication1.Models.SystemInformation> sysinfo = ViewBag.system_infos;
+    tuvantuyensinhsv.v2.Models.ProjectHEntities db = new tuvantuyensinhsv.v2.Models.ProjectHEntities();
+    List<tuvantuyensinhsv.v2.Models.SystemInformation> sysinfo = ViewBag.system_infos;
     
     int _Countruong = db.Truongs.Count();    
 }
@@ -276,7 +276,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (WebApplication1.Models.SystemInformation item in sysinfo)
+                @foreach (tuvantuyensinhsv.v2.Models.SystemInformation item in sysinfo)
                 {
                     <tr class="gradeA odd">
                         <td>
