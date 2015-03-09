@@ -25,50 +25,38 @@
     });
 </script>
 
-
-<div class="row">
-    <div class="col-lg-12">
+<br />
+<div class="panel panel-default class col-lg-8 col-lg-offset-2">
+    <div class="panel-body">
         <h3 class="page-header">Đăng bài</h3>
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
+        <div>
+            @using (Html.BeginForm())
+            {
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
 
-<div class="row">
-    <div class="col-lg-2">
-    </div>
-    <div class="col-lg-8">
-        @using (Html.BeginForm())
-        {
-            @Html.ValidationSummary(true)
-            @Html.AntiForgeryToken()
-
-            <div class="form-horizontal" ng-controller="TagEngineController as controller">
+                <div class="form-horizontal" ng-controller="TagEngineController as controller">
 
 
-                <div class="form-group">
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.TieuDe, new { @class = "form-control", placeholder = "Tiêu đề" })
-                        @Html.ValidationMessageFor(model => model.TieuDe)
+                    <div class="form-group">
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.TieuDe, new { @class = "form-control", placeholder = "Tiêu đề" })
+                            @Html.ValidationMessageFor(model => model.TieuDe)
+                        </div>
+                        <input type="submit" value="Lưu" class="btn btn-primary" style="min-width:100px;" />
                     </div>
-                    <input type="submit" value="Lưu" class="btn btn-primary" style="min-width:100px;" />
+
+                    <input name="Tabs" type="hidden" value="" id="_inputsTabs" ng-model="createcontroller.baiviet.tabs" />
+                    <textarea name="NoiDung" id="NoiDungEditor" style="height:500px;"></textarea>
                 </div>
+            }
+        </div>
 
-                <input name="Tabs" type="hidden" value="asdfasd" id="_inputsTabs" ng-model="createcontroller.baiviet.tabs" />
-                <textarea name="NoiDung" id="NoiDungEditor" style="height:500px;"></textarea>
-            </div>
-        }
+        <div class="row" style="margin-top:10px;">
+            @Html.Partial("~/views/tabengineserver/_createtag.cshtml")
+        </div>
     </div>
-    <div class="col-lg-2"></div>
 </div>
-
-<div class="row" style="margin-top:10px;">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8">
-        @Html.Partial("~/views/tabengineserver/_createtag.cshtml")
-    </div>
-    <div class="col-lg-2"></div>
-</div>
-
 
 
 @section Scripts {

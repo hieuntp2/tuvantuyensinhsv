@@ -11,8 +11,12 @@ namespace tuvantuyensinhsv.v2.Controllers
         // GET: /Home/
         public ActionResult Index()
         {
-            List<BaiViet> list = db.BaiViets.Where(t=>t.Trangthai == 1).OrderBy(t => t.NgayCapNhat).ToList();
-            return View(list);
+            List<Question> questions = db.Questions.OrderBy(t=>t.Ngaydang).Take(5).ToList();
+            ViewBag.questions = questions;
+
+            List<BaiViet> baiviets = db.BaiViets.OrderBy(t => t.NguoiDang).Take(5).ToList();
+            ViewBag.baiviets = baiviets;
+            return View();
         }
 
         [HttpPost]

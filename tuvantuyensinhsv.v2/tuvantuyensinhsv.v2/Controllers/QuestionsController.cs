@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using tuvantuyensinhsv.v2.Models;
+using Microsoft.AspNet.Identity;
+using System;
 
 namespace tuvantuyensinhsv.v2.Controllers
 {
@@ -50,10 +49,12 @@ namespace tuvantuyensinhsv.v2.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
-        public ActionResult Create([Bind(Include = "id,Tieude,Noidung,userid")] Question question)
+        public ActionResult Create([Bind(Include = "id,Tieude,Noidung,userid,Tabs")] Question question)
         {
             if (ModelState.IsValid)
             {
+                question.Ngaydang = DateTime.Now;
+                question.userid = User.Identity.GetUserId();
                 db.Questions.Add(question);
                 db.SaveChanges();
                 return RedirectToAction("Index");

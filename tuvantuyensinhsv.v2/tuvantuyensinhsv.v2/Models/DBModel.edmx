@@ -121,6 +121,7 @@
           <Property Name="Noidung" Type="ntext" />
           <Property Name="userid" Type="nvarchar" MaxLength="128" />
           <Property Name="Ngaydang" Type="datetime" />
+          <Property Name="Tabs" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="RatePost">
           <Key>
@@ -493,6 +494,7 @@
           <Property Name="userid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Ngaydang" Type="DateTime" Precision="3" />
           <NavigationProperty Name="AspNetUser" Relationship="ProjectHModel.FK_Questions_AspNetUsers" FromRole="Question" ToRole="AspNetUser" />
+          <Property Name="Tabs" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="RatePost">
           <Key>
@@ -900,6 +902,7 @@
           <EntitySetMapping Name="Questions">
             <EntityTypeMapping TypeName="ProjectHModel.Question">
               <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="Tabs" ColumnName="Tabs" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="Tieude" ColumnName="Tieude" />
                 <ScalarProperty Name="Noidung" ColumnName="Noidung" />

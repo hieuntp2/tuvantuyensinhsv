@@ -1,58 +1,111 @@
-﻿@model IEnumerable<tuvantuyensinhsv.v2.Models.BaiViet>
-
-@{
+﻿@{
     ViewBag.Title = "Index";
-    int counter = 0;
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+    List<tuvantuyensinhsv.v2.Models.Question> questions = ViewBag.questions;
+    List<tuvantuyensinhsv.v2.Models.BaiViet> baiviets = ViewBag.baiviets;
 }
 
-<div class="row">
-    <div class="col-lg-12">
-        <h3 class="page-header">Bài viết mới gần đây</h3>
+<div class="panel">
+    <div class="panel-body">
+        <h4>Giới thiệu</h4>
+        <hr />
+
+        <div class="col-lg-3">
+            <div class="panel-primary">
+                <div class="panel-body alert alert-success alert-dismissable">
+                    Tìm kiếm trường, ngành
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="panel-primary">
+                <div class="panel-body alert alert-success alert-dismissable">
+                    BMTI
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="panel-primary">
+                <div class="panel-body alert alert-success alert-dismissable">
+                    Thảo luận, Câu hỏi
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div class="panel-primary">
+                <div class="panel-body alert alert-success alert-dismissable">
+                    Page Group
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- /.col-lg-12 -->
 </div>
-<!-- /.row -->
-@foreach (var item in Model)
-{
-    if (counter % 3 == 0)
-    {   
-        <div class="row">
-        </div>
 
-    }
-    <div class="col-lg-4">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <a href="/BaiViets/Details/@item.ID">
-                    @Html.Raw(item.TieuDe)
-                </a>
-            </div>
-            <div class="panel-body">
-                @if (item.NoiDung.Length >= 100)
-                {
-                 //   @Html.Raw(item.NoiDung.Substring(0, 100)))
-                    <p>
-                        @Html.Raw(HtmlRemoval.StripTagsRegex(item.NoiDung.Substring(0, 100)))
-                    </p>
-                    
-                }
-                else
-                {
-                    @Html.Raw(HtmlRemoval.StripTagsRegex(item.NoiDung))
-                }
-                ...
-            </div>
-            <div class="panel-footer">
-                <span style="color:blue;"> @item.RatePosts.Where(t => t.Like == true).Count()</span> / <span style="color:red;"> @item.RatePosts.Where(t => t.Like == false).Count()</span>
-                <span style="float:right;">@item.NgayCapNhat.Day / @item.NgayCapNhat.Month</span>
+
+<div class="col-lg-6">
+    <div class="panel">
+        <div class="panel-body">
+            <h4>Bài viết mới</h4>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        @foreach (tuvantuyensinhsv.v2.Models.BaiViet item in baiviets)
+                        {
+                        <tr onclick="baivietclick(@item.ID)" style="cursor:pointer;">
+                            <td>@item.TieuDe</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
-        <!-- /.col-lg-4 -->
     </div>
-                {
-                    counter += 1;
+</div>
+<div class="col-lg-6">
+    <div class="panel">
+        <div class="panel-body">
+            <h4>Câu hỏi mới</h4>
 
-                }
+            <div class="table-responsive">
+                <table class="table">
+                    <tbody>
+                        @foreach (tuvantuyensinhsv.v2.Models.Question item in questions)
+                        {
+                        <tr onclick="questionclick(@item.id)" style="cursor:pointer;">
+                            <td>@item.Tieude</td>
+                            <td>@item.AspNetUser.UserName</td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
 
-}
-<!-- /.row -->
+        </div>
+    </div>
+</div>
+
+<script>
+    function questionclick(id)
+    {
+        window.location.href = "/questions/details/" + id;
+    }
+
+    function baivietclick(id)
+    {
+        window.location.href = "/baiviets/details/" + id;
+    }
+    function fmbti() {
+        window.location = "/mbtis/index";
+    }
+</script>
+<style>
+    .typeahead {
+        max-height: 300px;
+        width: 100%;
+        overflow-y: auto;
+    }
+</style>

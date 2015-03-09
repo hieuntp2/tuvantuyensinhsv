@@ -182,6 +182,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503070932503_InitialCreate.cs" />
+    <Compile Include="Migrations\201503070932503_InitialCreate.Designer.cs">
+      <DependentUpon>201503070932503_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503080317346_Init.cs" />
+    <Compile Include="Migrations\201503080317346_Init.Designer.cs">
+      <DependentUpon>201503080317346_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AspNetRole.cs">
       <DependentUpon>DBModel.tt</DependentUpon>
@@ -453,7 +462,14 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201503070932503_InitialCreate.resx">
+      <DependentUpon>201503070932503_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503080317346_Init.resx">
+      <DependentUpon>201503080317346_Init.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -510,7 +526,6 @@
     <Content Include="Views\BaiViets\Create.cshtml" />
     <Content Include="Views\BaiViets\Delete.cshtml" />
     <Content Include="Views\BaiViets\Details.cshtml" />
-    <Content Include="Views\BaiViets\Edit - Copy.cshtml" />
     <Content Include="Views\BaiViets\Edit.cshtml" />
     <Content Include="Views\BaiViets\Index.cshtml" />
     <Content Include="Views\BaiViets\ListBaiViet.cshtml" />
@@ -569,7 +584,6 @@
     <Content Include="Views\Shared\_header.cshtml" />
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\Shared\_Layout2.cshtml" />
-    <Content Include="Views\Shared\_Layout3.cshtml" />
     <Content Include="Views\Shared\_LayoutTruong.cshtml" />
     <Content Include="Views\Shared\_LoginPopUp.cshtml" />
     <Content Include="Views\Shared\_MessagePopup.cshtml" />
@@ -602,6 +616,8 @@
     <Content Include="Views\User\Details.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Shared\_shareFacebook.cshtml" />
+    <Content Include="Views\Shared\_header_nosearch.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

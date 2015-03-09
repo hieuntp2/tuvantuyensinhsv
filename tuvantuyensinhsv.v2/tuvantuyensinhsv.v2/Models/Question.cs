@@ -19,6 +19,7 @@ namespace tuvantuyensinhsv.v2.Models
         public string Noidung { get; set; }
         public string userid { get; set; }
         public Nullable<System.DateTime> Ngaydang { get; set; }
+        public string Tabs { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
     }

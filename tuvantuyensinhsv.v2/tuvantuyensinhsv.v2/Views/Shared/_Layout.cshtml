@@ -1,6 +1,6 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,26 +46,25 @@
 
     <!-- Typeahead -->
     <script src="~/Content/js/bootstrap-typeahead.js"></script>
-    <script src="~/content/js/accountengine.js"></script>
 </head>
 
 <body>
 
     <div id="wrapper">
         @Html.Partial("~/views/shared/_header.cshtml")
-
         <div id="page-wrapper" style="margin:0 0 0 0;">
+            <br />
             <div class="row">
                 @RenderBody()
-            </div>
-
-            @Html.Partial("_MessagePopup")
-
+                @Html.Partial("_MessagePopup")
+            </div>            
         </div>
         <!-- /#page-wrapper -->
+
         <footer>
-           @Html.Partial("~/views/shared/_footer.cshtml")
+            @Html.Partial("~/views/shared/_footer.cshtml")
         </footer>
+
     </div>
     <style>
         .typeahead {
