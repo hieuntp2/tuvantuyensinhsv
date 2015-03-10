@@ -16,7 +16,7 @@ namespace tuvantuyensinhsv.v2
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "IndexSearch", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 
             // Add this code to handle non-existing urls

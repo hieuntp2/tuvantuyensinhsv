@@ -280,7 +280,6 @@
     <Content Include="Content\chuaco.png" />
     <Content Include="Content\css\bootstrap.css" />
     <Content Include="Content\css\bootstrap.min.css" />
-    <Content Include="Content\css\plugins\dataTables.bootstrap.css" />
     <Content Include="Content\css\plugins\metisMenu\metisMenu.css" />
     <Content Include="Content\css\plugins\metisMenu\metisMenu.min.css" />
     <Content Include="Content\css\plugins\morris.css" />
@@ -527,7 +526,7 @@
     <Content Include="Views\BaiViets\Delete.cshtml" />
     <Content Include="Views\BaiViets\Details.cshtml" />
     <Content Include="Views\BaiViets\Edit.cshtml" />
-    <Content Include="Views\BaiViets\Index.cshtml" />
+    <Content Include="Views\BaiViets\QuanLyBaiViet.cshtml" />
     <Content Include="Views\BaiViets\ListBaiViet.cshtml" />
     <Content Include="Views\BaiViets\_AdminControlPost.cshtml" />
     <Content Include="Views\BaiViets\_LeftBaiViet.cshtml" />
@@ -618,6 +617,7 @@
     <Content Include="Views\User\Index.cshtml" />
     <Content Include="Views\Shared\_shareFacebook.cshtml" />
     <Content Include="Views\Shared\_header_nosearch.cshtml" />
+    <Content Include="Views\BaiViets\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

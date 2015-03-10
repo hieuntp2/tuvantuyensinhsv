@@ -6,7 +6,7 @@
 }
 <script src="~/Content/js/facebook_comment.js"></script>
 
-<div class="row">
+@*<div class="row">
     <div class="col-lg-2">
         <div class="col-lg-8">
         </div>
@@ -20,7 +20,7 @@
         </div>
     </div>
    
-</div>
+</div>*@
 
 <div class="col-lg-2">
     @Html.Partial("_ThongTinBaiViet")
@@ -34,8 +34,13 @@
 </div>
 
 @*Nội dung*@
-<div class="col-lg-8">
+<div class="col-lg-8 panel">
+  
     <div class="panel-body">
+        <h4>@Model.TieuDe</h4>
+        
+        <hr />
+
         @Html.Raw(Model.NoiDung)
 
         <hr />

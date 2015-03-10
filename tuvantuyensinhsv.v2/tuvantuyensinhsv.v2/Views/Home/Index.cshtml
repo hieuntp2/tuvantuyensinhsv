@@ -10,40 +10,48 @@
         <h4>Giới thiệu</h4>
         <hr />
 
-        <div class="col-lg-3">
-            <div class="panel-primary">
-                <div class="panel-body alert alert-success alert-dismissable">
-                    Tìm kiếm trường, ngành
-                </div>
+        <div class="col-lg-3 panel-primary">
+            <div class="panel-body alert alert-success" style="cursor:pointer;" onclick="fredirectSearch()">
+                <i class="fa fa-search fa-fw"></i>
+                Tìm kiếm trường, ngành
+                <hr />
+                Webste giúp các bạn tìm kiếm nhanh các trường/ ngành. Với các ngành học, sẽ được sắp xếp
+                theo thứ tự điểm năm gần nhất từ cao đến thấp. (Một số trường không được cập nhật điểm)
             </div>
         </div>
 
-        <div class="col-lg-3">
-            <div class="panel-primary">
-                <div class="panel-body alert alert-success alert-dismissable">
-                    BMTI
-                </div>
+        <div class="col-lg-3 panel-success" >
+            <div class="panel-body alert alert-info" style="cursor:pointer;" onclick="fmbti()">
+                <i class="fa fa-university fa-fw"></i>
+                MBTI - Ngành, nghề
+                <hr />
+                Sử dụng MBTI (phân loại tính cách con người) sẽ cho các bạn lời khuyên ngành nghề phù hợp với tính cách của mình.
+                Website kết hợp với dữ liệu của mình, cung cấp các bạn một số ngành học phù hợp tính cách.
+                Sau đó cùng với điểm thi khả năng của bạn, sẽ cung cấp các trường phù hợp với khả năng của các bạn.
             </div>
         </div>
 
-        <div class="col-lg-3">
-            <div class="panel-primary">
-                <div class="panel-body alert alert-success alert-dismissable">
-                    Thảo luận, Câu hỏi
-                </div>
+        <div class="col-lg-3 panel-primary">
+            <div class="panel-body alert alert-warning" style="cursor:pointer;" onclick="fredirectQuestions()">
+                <i class="fa fa-comments fa-fw"></i>
+                Thảo luận, Câu hỏi
+                <hr />
+                Nơi các bạn học sinh đặt câu hỏi mà mình thắc mắc về tư vấn tuyển sinh, trường/ngành/nghề...với các bạn sinh viên
+                đang/ đã theo học. Các bạn tự do đặt câu hỏi.
             </div>
         </div>
 
-        <div class="col-lg-3">
-            <div class="panel-primary">
-                <div class="panel-body alert alert-success alert-dismissable">
-                    Page Group
-                </div>
+        <div class="col-lg-3 panel-primary">
+            <div class="panel-body alert alert-danger" style="cursor:pointer;" onclick="fredirectBaiViet()">
+                <i class="fa fa-pencil fa-fw"></i>
+                Bài Viết
+                <hr />
+                Một số bài viết được chia sẻ từ các bạn học sinh, sinh viên, cựu sinh viên về những tâm sự, chia sẻ về
+                những điều các bạn đã trải qua.
             </div>
         </div>
     </div>
 </div>
-
 
 <div class="col-lg-6">
     <div class="panel">
@@ -51,13 +59,14 @@
             <h4>Bài viết mới</h4>
 
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-hover">
                     <tbody>
                         @foreach (tuvantuyensinhsv.v2.Models.BaiViet item in baiviets)
                         {
-                        <tr onclick="baivietclick(@item.ID)" style="cursor:pointer;">
-                            <td>@item.TieuDe</td>
-                        </tr>
+                            <tr onclick="baivietclick(@item.ID)" style="cursor:pointer;">
+                                <td style="width: 10px;"><i class="fa fa-pencil fa-fw"></i></td>
+                                <td>@item.TieuDe</td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -65,20 +74,22 @@
         </div>
     </div>
 </div>
+
 <div class="col-lg-6">
     <div class="panel">
         <div class="panel-body">
             <h4>Câu hỏi mới</h4>
 
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-hover">
                     <tbody>
                         @foreach (tuvantuyensinhsv.v2.Models.Question item in questions)
                         {
-                        <tr onclick="questionclick(@item.id)" style="cursor:pointer;">
-                            <td>@item.Tieude</td>
-                            <td>@item.AspNetUser.UserName</td>
-                        </tr>
+                            <tr onclick="questionclick(@item.id)" style="cursor:pointer;">
+                                <td><i class="fa fa-comments fa-fw"></i></td>
+                                <td>@item.Tieude</td>
+                                <td>@item.AspNetUser.UserName</td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -100,6 +111,21 @@
     }
     function fmbti() {
         window.location = "/mbtis/index";
+    }
+
+    function fredirectSearch()
+    {
+        window.location = "/home/indexsearch";
+    }
+
+    function fredirectQuestions()
+    {
+        window.location = "/questions/index";
+    }
+
+    function fredirectBaiViet()
+    {
+        window.location = "/baiviets/index";
     }
 </script>
 <style>

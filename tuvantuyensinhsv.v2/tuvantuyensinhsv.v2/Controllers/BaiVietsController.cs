@@ -19,8 +19,8 @@ namespace tuvantuyensinhsv.v2.Controllers
         [Authorize]
         public ActionResult Index()
         {         
-            string IDUser = User.Identity.GetUserId();
-            List<BaiViet> baiviets = db.BaiViets.Where(b => b.AspNetUser.Id == IDUser).ToList();
+            //string IDUser = User.Identity.GetUserId();
+            List<BaiViet> baiviets = db.BaiViets.OrderBy(t => t.NgayCapNhat).ToList();
             return View(baiviets.ToList());
         }
 

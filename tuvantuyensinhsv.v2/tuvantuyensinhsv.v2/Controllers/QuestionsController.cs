@@ -17,6 +17,7 @@ namespace tuvantuyensinhsv.v2.Controllers
         public ActionResult Index()
         {
             List<Question> questions = db.Questions.Include(q => q.AspNetUser).OrderBy(t => t.Ngaydang).ToList();
+            
             return View(questions);
         }
 
@@ -32,6 +33,9 @@ namespace tuvantuyensinhsv.v2.Controllers
             {
                 return HttpNotFound();
             }
+
+            List<Question> questions = db.Questions.OrderBy(t => t.Ngaydang).Take(5).ToList();
+            ViewBag.questions = questions;
             return View(question);
         }
 
