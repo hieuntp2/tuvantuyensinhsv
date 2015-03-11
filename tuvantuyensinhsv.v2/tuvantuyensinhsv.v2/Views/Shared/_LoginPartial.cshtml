@@ -8,7 +8,7 @@
     {
         string username =  User.Identity.GetUserId();
         AspNetUser user = db.AspNetUsers.SingleOrDefault(t => t.Id == username);
-        messages = user.MessageTo.ToList();
+        //messages = user.MessageTo.ToList();
         if (messages.Count > 0)
         {
             messages.OrderBy(t => t.DateCreate);
