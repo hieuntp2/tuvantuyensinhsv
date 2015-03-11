@@ -587,7 +587,6 @@
     <Content Include="Views\Shared\_LayoutTruong.cshtml" />
     <Content Include="Views\Shared\_LoginPopUp.cshtml" />
     <Content Include="Views\Shared\_MessagePopup.cshtml" />
-    <Content Include="Views\Shared\_PartialLogin2.cshtml" />
     <Content Include="Views\TabEngineServer\_CreateTag.cshtml" />
     <Content Include="Views\TabEngineServer\_EditTag.cshtml" />
     <Content Include="Views\TabEngineServer\_EditTagMTBI.cshtml" />
