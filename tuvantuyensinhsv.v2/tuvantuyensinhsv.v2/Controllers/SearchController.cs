@@ -69,27 +69,19 @@ namespace tuvantuyensinhsv.v2.Controllers
                 return HttpNotFound("Bạn cần điền thông tin nhiều hơn");
             }
 
+            System.Diagnostics.Stopwatch objStopWatch = new System.Diagnostics.Stopwatch();
+            objStopWatch.Start();
             List<SearchKeyResult> result = new List<SearchKeyResult>();
 
-            // Bước 1: Tìm đúng
-            searchTruong(result,key);           
-            searchNganhs(result, key);
-            searchTruongNganhs(result, key);
-            searchThanhPhoes(result, key);
-            searchBaiViets(result, key);
-
-            // Bước 2: Tìm gần đúng
-            if(result.Count == 0)
-            {
-                List<string> words = key.Split(' ').ToList();
-                ApproximateSearchTruong(result, words);
-                ApproximateSearchNganhs(result, words);
-                ApproximateSearchTruongNganhs(result, words);
-                ApproximateSearchThanhPhoes(result, words);
-                ApproximateSearchBaiViets(result, words);
-            }
+            string[] arwords = key.Split(' ');
+            ApproximateSearchTruong(result, arwords);
+            ApproximateSearchNganhs(result, arwords);
+            ApproximateSearchTruongNganhs(result, arwords);
+            ApproximateSearchThanhPhoes(result, arwords);
+            ApproximateSearchBaiViets(result, arwords);
 
             ViewBag.Key = key;
+            objStopWatch.Stop();
             return View(result);
         }
 
@@ -102,30 +94,17 @@ namespace tuvantuyensinhsv.v2.Controllers
             }
 
             List<SearchKeyResult> result = new List<SearchKeyResult>();
-            List<string> words = key.Split(' ').ToList();
-
+            string[] words = key.Split(' ');
             switch (t.ToLower())
             {
                 case "t":
-                    searchTruong(result, key);
-                    if(result.Count() == 0)
-                    {
-                        ApproximateSearchTruong(result, words);
-                    }                    
+                        ApproximateSearchTruong(result, words);                
                     break;
                 case "n":
-                    searchNganhs(result, key);
-                    if (result.Count() == 0)
-                    {
-                        ApproximateSearchNganhs(result, words);
-                    }                    
+                        ApproximateSearchNganhs(result, words);             
                     break;
                 case "p":
-                    searchThanhPhoes(result, key);
-                    if (result.Count() == 0)
-                    {
-                        ApproximateSearchThanhPhoes(result, words);
-                    }                    
+                        ApproximateSearchThanhPhoes(result, words);          
                     break;               
             }
 
@@ -137,194 +116,166 @@ namespace tuvantuyensinhsv.v2.Controllers
             ViewBag.Key = key;
             return View("Key",result);
         }
-            private void searchTruongNganhs(List<SearchKeyResult> result, string key)
-            {
-                List<TruongNganh> truongnganhs = db.TruongNganhs.Where(t => t.Nganh.Ten.Contains(key)).ToList(); ;
+            //private void searchTruongNganhs(List<SearchKeyResult> result, string key)
+            //{
+            //    List<TruongNganh> truongnganhs = db.TruongNganhs.AsNoTracking().Where(t => t.Nganh.Ten.Contains(key)).ToList(); ;
 
-                for (int i = 0; i < truongnganhs.Count; i++)
-                {
-                    //result.Add(new SearchKeyResult { IDBaiViet = baiviets[i].ID, TieuDeBaiViet = baiviets[i].TieuDe });
-                    AddResult(result, truongnganhs[i]);
-                }
-            }
-            private void searchBaiViets(List<SearchKeyResult> result, string key)
+            //    for (int i = 0; i < truongnganhs.Count; i++)
+            //    {
+            //        //result.Add(new SearchKeyResult { IDBaiViet = baiviets[i].ID, TieuDeBaiViet = baiviets[i].TieuDe });
+            //        AddResult(result, truongnganhs[i]);
+            //    }
+            //}
+            //private void searchBaiViets(List<SearchKeyResult> result, string key)
+            //{
+            //    List<BaiViet> baiviets = db.BaiViets.AsNoTracking().Where(t => t.TieuDe.Contains(key)).ToList();
+            //    ViewBag.baiviets = baiviets;
+            //    for (int i = 0; i < baiviets.Count; i++)
+            //    {
+            //        AddResult(result, baiviets[i]);  
+            //    }
+            //}
+            //private void searchThanhPhoes(List<SearchKeyResult> result, string key)
+            //{
+            //    List<ThanhPho> thanhphoes = db.ThanhPhoes.Where(t => t.Ten.Contains(key)).ToList();
+            //    for (int i = 0; i < thanhphoes.Count; i++)
+            //    {
+            //        AddResult(result, thanhphoes[i]);
+            //    }
+            //}
+            //private void searchNganhs(List<SearchKeyResult> result, string key)
+            //{
+            //    List<Nganh> nganhs = db.Nganhs.AsNoTracking().Where(t => t.Ten.Contains(key)).ToList();
+            //    for (int i = 0; i < nganhs.Count; i++)
+            //    {
+            //        AddResult(result, nganhs[i]);
+            //    }
+            //}
+            //private void searchTruong(List<SearchKeyResult> result, string key)
+            //{
+            //    List<Truong> truongs = db.Truongs.AsNoTracking().Where(t => t.Ten.Contains(key)).ToList();
+            //    for (int i = 0; i < truongs.Count; i++)
+            //    {
+            //        AddResult(result, truongs[i]);
+            //    }
+            //}
+
+            private void ApproximateSearchTruong(List<SearchKeyResult> result, string[] words)
             {
-                List<BaiViet> baiviets = db.BaiViets.Where(t => t.TieuDe.Contains(key)).ToList();
-                ViewBag.baiviets = baiviets;
-                for (int i = 0; i < baiviets.Count; i++)
-                {
-                    AddResult(result, baiviets[i]);  
-                }
-            }
-            private void searchThanhPhoes(List<SearchKeyResult> result, string key)
-            {
-                List<ThanhPho> thanhphoes = db.ThanhPhoes.Where(t => t.Ten.Contains(key)).ToList();
-                for (int i = 0; i < thanhphoes.Count; i++)
-                {
-                    AddResult(result, thanhphoes[i]);
-                }
-            }
-            private void searchNganhs(List<SearchKeyResult> result, string key)
-            {
-                List<Nganh> nganhs = db.Nganhs.Where(t => t.Ten.Contains(key)).ToList();
-                for (int i = 0; i < nganhs.Count; i++)
-                {
-                    AddResult(result, nganhs[i]);
-                }
-            }
-            private void searchTruong(List<SearchKeyResult> result, string key)
-            {
-                List<Truong> truongs = db.Truongs.Where(t => t.Ten.Contains(key)).ToList();
+                List<SearchKeyResult> truongs = (from tru in db.Truongs
+                                        where words.All(val => tru.Ten.Contains(val))
+                                        select new SearchKeyResult()
+                                        {
+                                            IDThangPho = tru.IDThanhPho,
+                                            TinhThanh = tru.ThanhPho.Ten,
+                                            MaTruong = tru.MaTruong,
+                                            TenTruong = tru.Ten,
+                                            MaNganh = "",
+                                            TenNganh = "",
+                                            Diem = 0,
+                                            IDBaiViet = 0,
+                                            TieuDeBaiViet = "",
+                                            Loai = "T",
+                                            linkLogo = (tru.linkLogo == null ? "/Content/university.png" : tru.linkLogo)
+                                        }).ToList();
+
                 for (int i = 0; i < truongs.Count; i++)
                 {
-                    AddResult(result, truongs[i]);
+                    result.Add(truongs[i]);
                 }
             }
-
-            private void ApproximateSearchTruong(List<SearchKeyResult> result, List<string> words)
-            {                  
-                List<Truong> truongs = (from tru in db.Truongs
-                                       where words.All(val => tru.Ten.Contains(val))
-                                       select tru).ToList();
-
-                for (int i = 0; i < truongs.Count; i++)
-                {
-                    AddResult(result, truongs[i]);  
-                }
-            }
-            private void ApproximateSearchTruongNganhs(List<SearchKeyResult> result, List<string> words)
+            private void ApproximateSearchTruongNganhs(List<SearchKeyResult> result, string[] words)
             {
-                List<TruongNganh> truongnganhs = (from tru in db.TruongNganhs
+                List<SearchKeyResult> truongnganhs = (from tru in db.TruongNganhs
                                                   where words.All(val => tru.Nganh.Ten.Contains(val))
-                                                  select tru).ToList();                      
+                                                  select new SearchKeyResult() 
+                                                  {
+                                                      IDThangPho = tru.Truong.ThanhPho.ID,
+                                                      TinhThanh = tru.Truong.ThanhPho.Ten,
+                                                      MaTruong = tru.Truong.MaTruong,
+                                                      TenTruong = tru.Truong.Ten,
+                                                      MaNganh = tru.MaNganh,
+                                                      TenNganh = tru.Nganh.Ten,
+                                                      Diem = (float)tru.Diem1,
+                                                      IDBaiViet = 0,
+                                                      TieuDeBaiViet = "",
+                                                      Loai = "S",
+                                                      linkLogo = (tru.Truong.linkLogo == null ? "/Content/university.png" : tru.Truong.linkLogo)
+                                                  }).ToList();                      
 
                 for (int i = 0; i < truongnganhs.Count; i++)
-                {
-                    //result.Add(new SearchKeyResult { IDBaiViet = baiviets[i].ID, TieuDeBaiViet = baiviets[i].TieuDe });
-                    AddResult(result, truongnganhs[i]);  
+                {                   
+                   result.Add(truongnganhs[i]);  
                 }
             }
-            private void ApproximateSearchBaiViets(List<SearchKeyResult> result, List<string> words)
+            private void ApproximateSearchBaiViets(List<SearchKeyResult> result, string[] words)
             {
-                List<BaiViet> baiviets = (from tru in db.BaiViets
+                List<SearchKeyResult> baiviets = (from tru in db.BaiViets
                                           where words.All(val => tru.TieuDe.Contains(val))
-                                          select tru).ToList();   
+                                          select new SearchKeyResult() 
+                                          {
+                                              IDThangPho = 0,
+                                              TinhThanh = "",
+                                              MaTruong = "",
+                                              TenTruong = "",
+                                              MaNganh = "",
+                                              TenNganh = "",
+                                              Diem = 0,
+                                              IDBaiViet = tru.ID,
+                                              TieuDeBaiViet = tru.TieuDe,
+                                              Loai = "B"
+                                          }).ToList();   
                                
                 for (int i = 0; i < baiviets.Count; i++)
                 {
-                    //result.Add(new SearchKeyResult { IDBaiViet = baiviets[i].ID, TieuDeBaiViet = baiviets[i].TieuDe });
-                    AddResult(result, baiviets[i]);                   
+                     result.Add(baiviets[i]);                   
                 }
             }
-            private void ApproximateSearchThanhPhoes(List<SearchKeyResult> result, List<string> words)
+            private void ApproximateSearchThanhPhoes(List<SearchKeyResult> result, string[] words)
             {
-                List<ThanhPho> thanhphoes = (from tru in db.ThanhPhoes
+                List<SearchKeyResult> thanhphoes = (from tru in db.ThanhPhoes
                                              where words.All(val => tru.Ten.Contains(val))
-                                             select tru).ToList(); 
+                                             select new SearchKeyResult() 
+                                             {
+                                                 IDThangPho = tru.ID,
+                                                 TinhThanh = tru.Ten,
+                                                 MaTruong = "",
+                                                 TenTruong = "",
+                                                 MaNganh = "",
+                                                 TenNganh = "",
+                                                 Diem = 0,
+                                                 IDBaiViet = 0,
+                                                 TieuDeBaiViet = "",
+                                                 Loai = "P"
+                                             }).ToList(); 
                 for (int i = 0; i < thanhphoes.Count; i++)
                 {
-                    AddResult(result, thanhphoes[i]);                    
+                    result.Add(thanhphoes[i]);                    
                 }
             }
-            private void ApproximateSearchNganhs(List<SearchKeyResult> result, List<string> words)
+            private void ApproximateSearchNganhs(List<SearchKeyResult> result, string[] words)
             {
-                List<Nganh> nganhs = (from tru in db.Nganhs
+                List<SearchKeyResult> nganhs = (from tru in db.Nganhs
                                       where words.All(val => tru.Ten.Contains(val))
-                                      select tru).ToList(); 
+                                                select new SearchKeyResult() 
+                                      {
+                                          IDThangPho = 0,
+                                          TinhThanh = "",
+                                          MaTruong = "",
+                                          TenTruong = "",
+                                          MaNganh = tru.MaNganh,
+                                          TenNganh = tru.Ten,
+                                          Diem = 0,
+                                          IDBaiViet = 0,
+                                          TieuDeBaiViet = "",
+                                          Loai = "N"
+                                      }).ToList(); 
                 for (int i = 0; i < nganhs.Count; i++)
                 {
-                    AddResult(result, nganhs[i]);
+                    result.Add(nganhs[i]);
                 }
             }
-
-        
-            private void AddResult(List<SearchKeyResult> result, Truong item)
-            {
-                result.Add(new SearchKeyResult
-                {
-                    IDThangPho = item.IDThanhPho,
-                    TinhThanh = item.ThanhPho.Ten,
-                    MaTruong = item.MaTruong,
-                    TenTruong = item.Ten,
-                    MaNganh = "",
-                    TenNganh = "",
-                    Diem = 0,
-                    IDBaiViet = 0,
-                    TieuDeBaiViet = "",
-                    Loai = "T",
-                    linkLogo = (item.linkLogo == null ? "/Content/university.png" : item.linkLogo)
-                });
-            }
-            private void AddResult(List<SearchKeyResult> result, Nganh item)
-            {
-                result.Add(new SearchKeyResult
-                {
-                    IDThangPho = 0,
-                    TinhThanh = "",
-                    MaTruong = "",
-                    TenTruong = "",
-                    MaNganh = item.MaNganh,
-                    TenNganh = item.Ten,
-                    Diem = 0,
-                    IDBaiViet = 0,
-                    TieuDeBaiViet = "",
-                    Loai = "N"
-                });
-            }
-            private void AddResult(List<SearchKeyResult> result, TruongNganh item)
-            {
-
-                if(result.SingleOrDefault(t=>t.MaNganh == item.MaNganh && t.MaTruong == item.MaTruong) != null)
-                {
-                    return;
-                }
-                result.Add(new SearchKeyResult
-                {
-                    IDThangPho = item.Truong.ThanhPho.ID,
-                    TinhThanh = item.Truong.ThanhPho.Ten,
-                    MaTruong = item.Truong.MaTruong,
-                    TenTruong = item.Truong.Ten,
-                    MaNganh = item.MaNganh,
-                    TenNganh = item.Nganh.Ten,
-                    Diem = (float)item.Diem1,
-                    IDBaiViet = 0,
-                    TieuDeBaiViet = "",
-                    Loai = "S",
-                    linkLogo = (item.Truong.linkLogo == null ? "/Content/university.png" : item.Truong.linkLogo)
-                });
-            }
-            private void AddResult(List<SearchKeyResult> result, ThanhPho item)
-            {
-                result.Add(new SearchKeyResult
-                {
-                    IDThangPho = item.ID,
-                    TinhThanh = item.Ten,
-                    MaTruong = "",
-                    TenTruong = "",
-                    MaNganh = "",
-                    TenNganh = "",
-                    Diem = 0,
-                    IDBaiViet = 0,
-                    TieuDeBaiViet = "",
-                    Loai = "P"
-                });
-            }
-            private void AddResult(List<SearchKeyResult> result, BaiViet item)
-            {
-                result.Add(new SearchKeyResult
-                {
-                    IDThangPho = 0,
-                    TinhThanh = "",
-                    MaTruong = "",
-                    TenTruong = "",
-                    MaNganh = "",
-                    TenNganh = "",
-                    Diem = 0,
-                    IDBaiViet = item.ID,
-                    TieuDeBaiViet = item.TieuDe,
-                    Loai = "B"
-                });
-            }  
+   
 
             private string ValidationTextSearch(ref string text)
             {

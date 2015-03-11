@@ -163,6 +163,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaiVietsController.cs" />
+    <Compile Include="Controllers\ClassEngine\SearchV2.cs" />
     <Compile Include="Controllers\ClassEngine\SysLogEngine.cs" />
     <Compile Include="Controllers\ClassEngine\SystemInfo.cs" />
     <Compile Include="Controllers\ClassEngine\TabEngineServerController.cs" />
