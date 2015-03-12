@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.8.0\lib\net45\Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -163,6 +166,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\BaiVietsController.cs" />
+    <Compile Include="Controllers\ClassEngine\FacebookUserInfor.cs" />
     <Compile Include="Controllers\ClassEngine\SearchV2.cs" />
     <Compile Include="Controllers\ClassEngine\SysLogEngine.cs" />
     <Compile Include="Controllers\ClassEngine\SystemInfo.cs" />
@@ -427,7 +431,9 @@
     <Content Include="Scripts\tinymce\tinymce.min.js" />
     <Content Include="Scripts\typeahead.bundle.js" />
     <Content Include="Views\Admin\New Text Document.txt" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

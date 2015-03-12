@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using tuvantuyensinhsv.v2.Models;
+using tuvantuyensinhsv.v2.Controllers.ClassEngine;
 
 namespace tuvantuyensinhsv.v2.Controllers
 {
@@ -64,6 +65,9 @@ namespace tuvantuyensinhsv.v2.Controllers
                 : "";
 
             var userId = User.Identity.GetUserId();
+
+            FacebookUserInfor fbuser = new FacebookUserInfor();
+            string email = fbuser.getEmail("hieuntp2");
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
