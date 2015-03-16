@@ -14,7 +14,7 @@
                 ctrll.baiviets = data;
 
             }).error(function () {
-                alert("Lỗi khi lấy dữ liệu tags");
+                alert("Lỗi khi lấy dữ liệu bai viet");
             });
         }
 

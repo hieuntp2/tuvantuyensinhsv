@@ -844,6 +844,8 @@
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Content>
     <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\AngularJs\homeindexscript.js" />
+    <Content Include="Scripts\AngularJs\questionscript.js" />
     <Content Include="Scripts\AngularJs\baivietscripts.js" />
     <Content Include="Scripts\bootstrap-typeahead.js" />
     <Content Include="Scripts\mbtiscript.js" />

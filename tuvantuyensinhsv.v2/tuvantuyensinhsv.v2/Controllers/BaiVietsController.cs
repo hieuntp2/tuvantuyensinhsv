@@ -11,12 +11,17 @@ using Microsoft.AspNet.Identity;
 
 namespace tuvantuyensinhsv.v2.Controllers
 {
+    /// <summary>
+    /// Dùng để loadObject dưới dạng json trả về view
+    /// loai: b: baiviet, q: question
+    /// </summary>
     public class JsonObjectBaiViet
     {
         public int id;
         public string tieude;
         public string noidung;
-        public DateTime ngaydang;
+        public string ngaydang;
+        public char loai;
     }
     public class BaiVietsController : Controller
     {
@@ -25,8 +30,8 @@ namespace tuvantuyensinhsv.v2.Controllers
         // GET: /BaiViets/
         [Authorize]
         public ActionResult Index()
-        {         
-           
+        {
+
             //string IDUser = User.Identity.GetUserId();
             List<BaiViet> baiviets = db.BaiViets.OrderBy(t => t.NgayCapNhat).ToList();
             return View(baiviets.ToList());
@@ -37,7 +42,7 @@ namespace tuvantuyensinhsv.v2.Controllers
             JsonObjectBaiViet[] baiviets = new JsonObjectBaiViet[5];
 
             int skip;
-            if(index == null || index == 0)
+            if (index == null || index == 0)
             {
                 skip = 0;
             }
@@ -51,10 +56,31 @@ namespace tuvantuyensinhsv.v2.Controllers
                 id = t.ID,
                 tieude = t.TieuDe,
                 noidung = t.NoiDung,
-                ngaydang = t.NgayCapNhat
+                ngaydang = t.NgayCapNhat.ToString()
             }).ToArray();
 
+            for (int i = 0; i < baiviets.Length; i++)
+            {
+                preparebaiviets(ref baiviets[i]);
+            }
             return Json(baiviets, JsonRequestBehavior.AllowGet);
+        }
+
+        private void preparebaiviets(ref JsonObjectBaiViet bai)
+        {
+            if (bai.noidung.Length >= 100)
+            {
+                bai.noidung = bai.noidung.Substring(0, 99);
+                
+            }
+            bai.loai = 'b';
+            bai.noidung = RemoveHTMLTags(bai.noidung);
+        }
+
+        private string RemoveHTMLTags(string HTMLCode)
+        {
+            return System.Text.RegularExpressions.Regex.Replace(
+              HTMLCode, "<[^>]*>", "");
         }
 
         /// <summary>
@@ -70,13 +96,13 @@ namespace tuvantuyensinhsv.v2.Controllers
         [Authorize(Roles = "Admin,Moderate")]
         public ActionResult ListBaiViet(int trangthai)
         {
-            List<BaiViet> list = new List<BaiViet>();   
-            switch(trangthai)
+            List<BaiViet> list = new List<BaiViet>();
+            switch (trangthai)
             {
                 case -1:
                     ViewBag.Title = "Tất cả bài viết";
                     list = db.BaiViets.ToList();
-                    break;   
+                    break;
                 case 0:
                     ViewBag.Title = "Bài đang được đợi đăng";
                     list = db.BaiViets.Where(t => t.Trangthai == trangthai).ToList();
@@ -118,7 +144,7 @@ namespace tuvantuyensinhsv.v2.Controllers
             RatePost item = db.RatePosts.SingleOrDefault(t => t.IDBaiViet == ID
                                                             && t.IDUsername == IDUser);
             // Neu nguoi post cap nhat
-            if(item == null)
+            if (item == null)
             {
                 item = new RatePost();
                 item.IDUsername = IDUser;
@@ -248,7 +274,7 @@ namespace tuvantuyensinhsv.v2.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
+
             BaiViet baiviet = db.BaiViets.Find(id);
             if (checkUser(baiviet) == false)
             {
@@ -291,7 +317,7 @@ namespace tuvantuyensinhsv.v2.Controllers
         private bool checkUser(BaiViet baiviet)
         {
             string IDUser = User.Identity.GetUserId();
-            if(IDUser == baiviet.AspNetUser.Id)
+            if (IDUser == baiviet.AspNetUser.Id)
             {
                 return true;
             }

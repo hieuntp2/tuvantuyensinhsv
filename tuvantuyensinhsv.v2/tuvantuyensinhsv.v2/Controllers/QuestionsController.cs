@@ -39,6 +39,51 @@ namespace tuvantuyensinhsv.v2.Controllers
             return View(question);
         }
 
+        public JsonResult getQuestion(int? index)
+        {
+            JsonObjectBaiViet[] questions = new JsonObjectBaiViet[5];
+
+            int skip;
+            if (index == null || index == 0)
+            {
+                skip = 0;
+            }
+            else
+            {
+                skip = (int)(5 * index);
+            }
+
+            questions = db.Questions.OrderBy(t => t.Ngaydang).Skip(skip).Take(5).Select(t => new JsonObjectBaiViet()
+            {
+                id = t.id,
+                tieude = t.Tieude,
+                noidung = t.Noidung,
+                ngaydang = t.Ngaydang.ToString()
+            }).ToArray();
+
+            for (int i = 0; i < questions.Length; i++)
+            {
+                preparebaiviets(ref questions[i]);
+            }
+            return Json(questions, JsonRequestBehavior.AllowGet);
+        }
+
+        private void preparebaiviets(ref JsonObjectBaiViet bai)
+        {
+            if (bai.noidung.Length >= 100)
+            {
+                bai.noidung = bai.noidung.Substring(0, 99);
+            }
+            bai.loai = 'q';
+            bai.noidung = RemoveHTMLTags(bai.noidung);
+        }
+
+        private string RemoveHTMLTags(string HTMLCode)
+        {
+            return System.Text.RegularExpressions.Regex.Replace(
+              HTMLCode, "<[^>]*>", "");
+        }
+
         // GET: Questions/Create
         [Authorize]
         public ActionResult Create()

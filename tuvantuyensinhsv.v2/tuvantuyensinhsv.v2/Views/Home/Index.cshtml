@@ -1,129 +1,147 @@
 ﻿@{
     ViewBag.Title = "Index";
-    //List<tuvantuyensinhsv.v2.Models.Question> questions = ViewBag.questions;
-    //List<tuvantuyensinhsv.v2.Models.BaiViet> baiviets = ViewBag.baiviets;
 }
-<script src="~/scripts/angularjs/baivietscripts.js"></script>
 
-<div class="panel">
-    <div class="panel-body">
-        <h4>Giới thiệu</h4>
-        <hr />
 
-        <div class="col-lg-3 panel-primary">
-            <div class="panel-body alert alert-success" style="cursor:pointer;" onclick="fredirectSearch()">
-                <i class="fa fa-search fa-fw"></i>
-                Tìm kiếm trường, ngành
-                <hr />
-                Webste giúp các bạn tìm kiếm nhanh các trường/ ngành. Với các ngành học, sẽ được sắp xếp
-                theo thứ tự điểm năm gần nhất từ cao đến thấp. (Một số trường không được cập nhật điểm)
-            </div>
-        </div>
-
-        <div class="col-lg-3 panel-success" >
-            <div class="panel-body alert alert-info" style="cursor:pointer;" onclick="fmbti()">
-                <i class="fa fa-university fa-fw"></i>
-                MBTI - Ngành, nghề
-                <hr />
-                Sử dụng MBTI (phân loại tính cách con người) sẽ cho các bạn lời khuyên ngành nghề phù hợp với tính cách của mình.
-                Website kết hợp với dữ liệu của mình, cung cấp các bạn một số ngành học phù hợp tính cách.
-                Sau đó cùng với điểm thi khả năng của bạn, sẽ cung cấp các trường phù hợp với khả năng của các bạn.
-            </div>
-        </div>
-
-        <div class="col-lg-3 panel-primary">
-            <div class="panel-body alert alert-warning" style="cursor:pointer;" onclick="fredirectQuestions()">
-                <i class="fa fa-comments fa-fw"></i>
-                Thảo luận, Câu hỏi
-                <hr />
-                Nơi các bạn học sinh đặt câu hỏi mà mình thắc mắc về tư vấn tuyển sinh, trường/ngành/nghề...với các bạn sinh viên
-                đang/ đã theo học. Các bạn tự do đặt câu hỏi.
-            </div>
-        </div>
-
-        <div class="col-lg-3 panel-primary">
-            <div class="panel-body alert alert-danger" style="cursor:pointer;" onclick="fredirectBaiViet()">
-                <i class="fa fa-pencil fa-fw"></i>
-                Bài Viết
-                <hr />
-                Một số bài viết được chia sẻ từ các bạn học sinh, sinh viên, cựu sinh viên về những tâm sự, chia sẻ về
-                những điều các bạn đã trải qua.
-            </div>
-        </div>
+<div class="row">
+    <!--Slide-->
+    <div class="col-lg-6">
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">Website</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carousel-example-generic" data-slide-to="0" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+                        <li data-target="#carousel-example-generic" data-slide-to="2" class="active"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item">
+                            <img src="http://placehold.it/900x500/39CCCC/ffffff&amp;text=I+Love+Bootstrap" alt="First slide">
+                            <div class="carousel-caption">
+                                First Slide
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="http://placehold.it/900x500/3c8dbc/ffffff&amp;text=I+Love+Bootstrap" alt="Second slide">
+                            <div class="carousel-caption">
+                                Second Slide
+                            </div>
+                        </div>
+                        <div class="item active">
+                            <img src="http://placehold.it/900x500/f39c12/ffffff&amp;text=I+Love+Bootstrap" alt="Third slide">
+                            <div class="carousel-caption">
+                                Third Slide
+                            </div>
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                        <span class="fa fa-angle-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                        <span class="fa fa-angle-right"></span>
+                    </a>
+                </div>
+            </div><!-- /.box-body -->
+        </div><!-- /.box -->
     </div>
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box" style="cursor:pointer;" onclick="fredirectSearch()">
+            <span class="info-box-icon bg-aqua"><i class="ion ion-ios-search-strong"></i></span>
+            <div class="info-box-content">                
+                <span class="info-box-number">Tìm kiếm</span>
+                <span class="info-box-text">520 trường</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box" style="cursor:pointer;" onclick="fredirectBaiViet()">
+            <span class="info-box-icon bg-red"><i class="ion ion-compose"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-number">Bài viết</span>
+                <span class="info-box-text"> >100 bài viết</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+  
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box" style="cursor:pointer;" onclick="fredirectQuestions()">
+            <span class="info-box-icon bg-green"><i class="ion ion-chatbubbles"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-number">Thảo luận</span>
+                <span>Trao đổi học sinh-sinh viên</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+
+    <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="info-box" style="cursor:pointer;" onclick="fmbti()">
+            <span class="info-box-icon bg-yellow"><i class="ion ion-university"></i></span>
+            <div class="info-box-content">
+                <span class="info-box-number">MBTI</span>
+                <span>Tính cách-Ngành nghề</span>
+            </div><!-- /.info-box-content -->
+        </div><!-- /.info-box -->
+    </div><!-- /.col -->
+
 </div>
 
-<div class="col-lg-12" ng-app="baivietapp">
-    <div ng-controller="BaivietController as controller" ng-init="controller.init()">
-        <div class="col-md-4" ng-repeat="baiviet in controller.baiviets">
+<section class="content-header">
+    <h1>
+        Mới
+        <small>Bài viết/thảo luận mới</small>
+    </h1>   
+</section>
+<hr />
+
+<div class="row connectedSortable ui-sortable" ng-app="homepage">
+
+    <div ng-controller="indexcontroller as controller" ng-init="controller.init()">
+        <div class="col-lg-3" ng-repeat="post in controller.posts | orderBy: '-ngaydang'" ng-click="controller.postclick(post.id, post.loai)">
             <!-- Info box -->
-            <div class="box box-info">
+            <div ng-class="post.loai === 'q'? 'box box-warning': 'box box-info'" style="cursor:pointer;">
                 <div class="box-header">
-                    <h3 class="box-title">{{baiviet.tieude}}</h3>
+                    <h3 class="box-title">{{post.tieude}}</h3>
                 </div>
                 <div class="box-body">
-                    <p>{{baiviet.noidung.substring(0,100)}}</p>
+                    <p>{{post.noidung}}</p>
                 </div><!-- /.box-body -->
                 <div class="box-footer">
-                    <code>{{baiviet.ngaydang}}</code>
+                    <code>{{post.ngaydang}}</code>
                 </div><!-- /.box-footer-->
             </div><!-- /.box -->
         </div>
-    </div>   
-</div>
-
-@*<div class="col-lg-6">
-    <div class="panel">
-        <div class="panel-body">
-            <h4>Câu hỏi mới</h4>
-
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <tbody>
-                        @foreach (tuvantuyensinhsv.v2.Models.Question item in questions)
-                        {
-                            <tr onclick="questionclick(@item.id)" style="cursor:pointer;">
-                                <td><i class="fa fa-comments fa-fw"></i></td>
-                                <td>@item.Tieude</td>
-                                <td>@item.AspNetUser.UserName</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-
-        </div>
     </div>
-</div>*@
 
+</div>
 <script>
-    function questionclick(id)
-    {
+    function questionclick(id) {
         window.location.href = "/questions/details/" + id;
     }
 
-    function baivietclick(id)
-    {
+    function baivietclick(id) {
         window.location.href = "/baiviets/details/" + id;
     }
     function fmbti() {
         window.location = "/mbtis/index";
     }
 
-    function fredirectSearch()
-    {
+    function fredirectSearch() {
         window.location = "/home/indexsearch";
     }
 
-    function fredirectQuestions()
-    {
+    function fredirectQuestions() {
         window.location = "/questions/index";
     }
 
-    function fredirectBaiViet()
-    {
+    function fredirectBaiViet() {
         window.location = "/baiviets/index";
     }
+
 </script>
 <style>
     .typeahead {
@@ -132,3 +150,7 @@
         overflow-y: auto;
     }
 </style>
+
+<script src="~/scripts/angularjs/homeindexscript.js"></script>
+
+
