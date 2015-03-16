@@ -843,6 +843,8 @@
     <Content Include="Models\DBModel.edmx.diagram">
       <DependentUpon>DBModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\AngularJs\baivietscripts.js" />
     <Content Include="Scripts\bootstrap-typeahead.js" />
     <Content Include="Scripts\mbtiscript.js" />
     <Content Include="Scripts\QuickSearchBaiViet.js" />

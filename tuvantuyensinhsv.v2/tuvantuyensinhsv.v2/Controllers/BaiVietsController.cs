@@ -11,6 +11,13 @@ using Microsoft.AspNet.Identity;
 
 namespace tuvantuyensinhsv.v2.Controllers
 {
+    public class JsonObjectBaiViet
+    {
+        public int id;
+        public string tieude;
+        public string noidung;
+        public DateTime ngaydang;
+    }
     public class BaiVietsController : Controller
     {
         private ProjectHEntities db = new ProjectHEntities();
@@ -23,6 +30,31 @@ namespace tuvantuyensinhsv.v2.Controllers
             //string IDUser = User.Identity.GetUserId();
             List<BaiViet> baiviets = db.BaiViets.OrderBy(t => t.NgayCapNhat).ToList();
             return View(baiviets.ToList());
+        }
+
+        public JsonResult getNewPost(int? index)
+        {
+            JsonObjectBaiViet[] baiviets = new JsonObjectBaiViet[5];
+
+            int skip;
+            if(index == null || index == 0)
+            {
+                skip = 0;
+            }
+            else
+            {
+                skip = (int)(5 * index);
+            }
+
+            baiviets = db.BaiViets.OrderBy(t => t.NgayCapNhat).Skip(skip).Take(5).Select(t => new JsonObjectBaiViet()
+            {
+                id = t.ID,
+                tieude = t.TieuDe,
+                noidung = t.NoiDung,
+                ngaydang = t.NgayCapNhat
+            }).ToArray();
+
+            return Json(baiviets, JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>

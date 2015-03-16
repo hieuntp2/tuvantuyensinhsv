@@ -1,8 +1,9 @@
 ﻿@{
     ViewBag.Title = "Index";
-    List<tuvantuyensinhsv.v2.Models.Question> questions = ViewBag.questions;
-    List<tuvantuyensinhsv.v2.Models.BaiViet> baiviets = ViewBag.baiviets;
+    //List<tuvantuyensinhsv.v2.Models.Question> questions = ViewBag.questions;
+    //List<tuvantuyensinhsv.v2.Models.BaiViet> baiviets = ViewBag.baiviets;
 }
+<script src="~/scripts/angularjs/baivietscripts.js"></script>
 
 <div class="panel">
     <div class="panel-body">
@@ -52,29 +53,26 @@
     </div>
 </div>
 
-<div class="col-lg-6">
-    <div class="panel">
-        <div class="panel-body">
-            <h4>Bài viết mới</h4>
-
-            <div class="table-responsive">
-                <table class="table table-hover">
-                    <tbody>
-                        @foreach (tuvantuyensinhsv.v2.Models.BaiViet item in baiviets)
-                        {
-                            <tr onclick="baivietclick(@item.ID)" style="cursor:pointer;">
-                                <td style="width: 10px;"><i class="fa fa-pencil fa-fw"></i></td>
-                                <td>@item.TieuDe</td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+<div class="col-lg-12" ng-app="baivietapp">
+    <div ng-controller="BaivietController as controller" ng-init="controller.init()">
+        <div class="col-md-4" ng-repeat="baiviet in controller.baiviets">
+            <!-- Info box -->
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">{{baiviet.tieude}}</h3>
+                </div>
+                <div class="box-body">
+                    <p>{{baiviet.noidung.substring(0,100)}}</p>
+                </div><!-- /.box-body -->
+                <div class="box-footer">
+                    <code>{{baiviet.ngaydang}}</code>
+                </div><!-- /.box-footer-->
+            </div><!-- /.box -->
         </div>
-    </div>
+    </div>   
 </div>
 
-<div class="col-lg-6">
+@*<div class="col-lg-6">
     <div class="panel">
         <div class="panel-body">
             <h4>Câu hỏi mới</h4>
@@ -96,7 +94,7 @@
 
         </div>
     </div>
-</div>
+</div>*@
 
 <script>
     function questionclick(id)
