@@ -99,9 +99,8 @@
 <hr />
 
 <div class="row connectedSortable ui-sortable" ng-app="homepage">
-
-    <div ng-controller="indexcontroller as controller" ng-init="controller.init()">
-        <div class="col-lg-3" ng-repeat="post in controller.posts | orderBy: '-ngaydang'" ng-click="controller.postclick(post.id, post.loai)">
+    <div ng-controller="indexcontroller as controller" ng-init="controller.init()" id="_home_content">
+        <div class="col-lg-4" ng-repeat="post in controller.posts | orderBy: '-ngaydang'" ng-click="controller.postclick(post.id, post.loai)">
             <!-- Info box -->
             <div ng-class="post.loai === 'q'? 'box box-warning': 'box box-info'" style="cursor:pointer;">
                 <div class="box-header">
@@ -115,8 +114,19 @@
                 </div><!-- /.box-footer-->
             </div><!-- /.box -->
         </div>
-    </div>
 
+        <script>
+            
+        </script>
+    </div>
+</div>
+
+<div>
+    <div class="progress progress-sm active">
+        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
 </div>
 <script>
     function questionclick(id) {
@@ -142,6 +152,39 @@
         window.location = "/baiviets/index";
     }
 
+    // code
+    var _current_page = 0;
+    $(function () {
+        $(window).scroll(function () {
+            if ($(document).height() == $(window).scrollTop() + $(window).height()) {
+
+                if (count > 0) {
+                }
+                else {
+                    _current_page += 1;
+                    count = 5;
+                    angular.element($('#_home_content')).scope().addpost(_current_page);
+                }
+            }
+        });
+    });
+
+    // function countdown time
+    var count = 5;
+
+    var counter = setInterval(timer, 500); //1000 will  run it every 1 second
+
+    function timer() {
+        count = count - 1;
+        if (count <= 0) {
+            clearInterval(counter);
+            //counter ended, do something here
+            return;
+        }
+
+        //Do code for showing the number of seconds here
+    }
+    // End function countdown time
 </script>
 <style>
     .typeahead {

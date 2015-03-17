@@ -1074,7 +1074,6 @@
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Search\Key.cshtml" />
-    <Content Include="Views\Search\Key_backup.cshtml" />
     <Content Include="Views\TabEngineServer\_CreateTag.cshtml" />
     <Content Include="Views\TabEngineServer\_EditTag.cshtml" />
     <Content Include="Views\TabEngineServer\_EditTagMTBI.cshtml" />
