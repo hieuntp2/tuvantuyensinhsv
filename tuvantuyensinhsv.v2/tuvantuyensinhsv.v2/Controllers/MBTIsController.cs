@@ -19,7 +19,7 @@ namespace tuvantuyensinhsv.v2.Controllers
         {
             SystemInfo record = new SystemInfo();
             record.AddValue("mbti_index", 1);
-            return View();
+            return View("/Views/MBTIs/Index2.cshtml");
         }
 
         // GET: MBTIs/Details/5

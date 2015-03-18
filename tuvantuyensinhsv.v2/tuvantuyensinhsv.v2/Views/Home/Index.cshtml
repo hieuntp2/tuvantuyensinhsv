@@ -98,7 +98,7 @@
 </section>
 <hr />
 
-<div class="row connectedSortable ui-sortable" ng-app="homepage">
+@*<div class="row connectedSortable ui-sortable" ng-app="homepage">
     <div ng-controller="indexcontroller as controller" ng-init="controller.init()" id="_home_content">
         <div class="col-lg-4" ng-repeat="post in controller.posts | orderBy: '-ngaydang'" ng-click="controller.postclick(post.id, post.loai)">
             <!-- Info box -->
@@ -114,20 +114,31 @@
                 </div><!-- /.box-footer-->
             </div><!-- /.box -->
         </div>
+    </div>
+</div>*@
 
-        <script>
-            
-        </script>
+<div class="row">
+    <div class="col-lg-12" ng-app="homepage">
+        <ul class="timeline" ng-controller="indexcontroller as controller" ng-init="controller.init()" id="_home_content">
+            <!-- timeline item -->
+            <li style="cursor:pointer;" ng-repeat="post in controller.posts | orderBy: '-ngaydang'" ng-click="controller.postclick(post.id, post.loai)">
+                <i ng-class="post.loai === 'q'? 'ion ion-chatbubbles bg-green': 'ion ion-compose bg-red'"></i>
+                <div class="timeline-item">
+                    <span class="time"><i class="fa fa-clock-o"></i>{{post.ngaydang}}</span>
+                    <h3 class="timeline-header"><b>{{post.tieude}}</b></h3>
+                    <div class="timeline-body">
+                        {{post.noidung}}
+                    </div>
+                </div>
+            </li>
+            <!-- END timeline item -->
+            <li>
+                <i class="fa fa-clock-o bg-gray"></i>
+            </li>
+        </ul>
     </div>
 </div>
 
-<div>
-    <div class="progress progress-sm active">
-        <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
-</div>
 <script>
     function questionclick(id) {
         window.location.href = "/questions/details/" + id;
