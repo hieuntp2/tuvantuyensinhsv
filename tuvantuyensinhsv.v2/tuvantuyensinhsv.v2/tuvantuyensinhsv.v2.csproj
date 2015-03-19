@@ -1053,7 +1053,6 @@
     <Content Include="Views\MBTIs\Details.cshtml" />
     <Content Include="Views\MBTIs\Edit.cshtml" />
     <Content Include="Views\MBTIs\getRangeSchool.cshtml" />
-    <Content Include="Views\MBTIs\Index.cshtml" />
     <Content Include="Views\MBTIs\_ExtraversionIntroversion.cshtml" />
     <Content Include="Views\MBTIs\_introductMBTI.cshtml" />
     <Content Include="Views\MBTIs\_JudgmentPerception.cshtml" />
@@ -1108,6 +1107,7 @@
     <Content Include="Views\Shared\_PartialLogin2.cshtml" />
     <Content Include="Views\Shared\_main_slide_bar.cshtml" />
     <Content Include="Views\MBTIs\Index2.cshtml" />
+    <Content Include="Views\MBTIs\_kiemtraMBTI.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -18,11 +18,32 @@ function fstep4(key) {
     $("#result_step_4").html(key);
 }
 
+function call_kiemtra() {
+    $("#li_step0").removeClass("active");
+    $("#li_step2").removeClass("active");
+    $("#li_step3").removeClass("active");
+    $("#li_step4").removeClass("active");
+    $("#li_step1").removeClass("active");
+    $("#li_stepketqua").removeClass("active");
+    $("#li_stepkiemtra").addClass("active");
+
+
+    $("#intro").removeClass("in active");
+    $("#profile").removeClass("in active");
+    $("#messages").removeClass("in active");
+    $("#settings").removeClass("in active");
+    $("#intro").removeClass("in active");
+    $("#home").removeClass("in active");
+    $("#ketqua").removeClass("in active");
+    $("#kiemtra").addClass("in active");
+}
 function call_EI() {
     $("#li_step0").removeClass("active");
     $("#li_step2").removeClass("active");
     $("#li_step3").removeClass("active");
     $("#li_step4").removeClass("active");
+    $("#li_stepkiemtra").removeClass("active");
+    $("#li_stepketqua").removeClass("active");
     $("#li_step1").addClass("active");
     
     $("#intro").removeClass("in active");
@@ -30,6 +51,8 @@ function call_EI() {
     $("#messages").removeClass("in active");
     $("#settings").removeClass("in active");
     $("#intro").removeClass("in active");
+    $("#kiemtra").removeClass("in active");
+    $("#ketqua").removeClass("in active");
     $("#home").addClass("in active");
 }
 function call_SN() {
@@ -37,6 +60,9 @@ function call_SN() {
     $("#li_step1").removeClass("active");
     $("#li_step3").removeClass("active");
     $("#li_step4").removeClass("active");
+    $("#li_stepkiemtra").removeClass("active");
+    $("#kiemtra").removeClass("in active");
+    $("#li_stepketqua").removeClass("active");
     $("#li_step2").addClass("active");
 
     $("#profile").removeClass("in active");
@@ -44,6 +70,7 @@ function call_SN() {
     $("#messages").removeClass("in active");
     $("#settings").removeClass("in active");
     $("#intro").removeClass("in active");
+    $("#ketqua").removeClass("in active");
     $("#profile").addClass("in active");
 }
 function call_TF() {
@@ -51,6 +78,8 @@ function call_TF() {
     $("#li_step2").removeClass("active");
     $("#li_step1").removeClass("active");
     $("#li_step4").removeClass("active");
+    $("#li_stepkiemtra").removeClass("active");
+    $("#li_stepketqua").removeClass("active");
     $("#li_step3").addClass("active");
 
     $("#intro").removeClass("in active");
@@ -58,6 +87,8 @@ function call_TF() {
     $("#home").removeClass("in active");
     $("#settings").removeClass("in active");
     $("#intro").removeClass("in active");
+    $("#kiemtra").removeClass("in active");
+    $("#ketqua").removeClass("in active");
     $("#messages").addClass("in active");
 }
 function call_JP() {
@@ -65,6 +96,8 @@ function call_JP() {
     $("#li_step2").removeClass("active");
     $("#li_step3").removeClass("active");
     $("#li_step1").removeClass("active");
+    $("#li_stepkiemtra").removeClass("active");
+    $("#li_stepketqua").removeClass("active");
     $("#li_step4").addClass("active");
 
     $("#intro").removeClass("in active");
@@ -72,7 +105,27 @@ function call_JP() {
     $("#messages").removeClass("in active");
     $("#home").removeClass("in active");
     $("#intro").removeClass("in active");
+    $("#kiemtra").removeClass("in active");
+    $("#ketqua").removeClass("in active");
     $("#settings").addClass("in active");
+}
+function call_ketqua() {
+    $("#li_step0").removeClass("active");
+    $("#li_step2").removeClass("active");
+    $("#li_step3").removeClass("active");
+    $("#li_step1").removeClass("active");
+    $("#li_stepkiemtra").removeClass("active");
+    $("#li_step4").removeClass("active");
+    $("#li_stepketqua").addClass("active");
+
+    $("#intro").removeClass("in active");
+    $("#profile").removeClass("in active");
+    $("#messages").removeClass("in active");
+    $("#home").removeClass("in active");
+    $("#intro").removeClass("in active");
+    $("#kiemtra").removeClass("in active");
+    $("#settings").removeClass("in active");    
+    $("#ketqua").addClass("in active");
 }
 
 function _fgetmbti() {
@@ -87,7 +140,7 @@ function _fgetmbti() {
         alert("Cần chọn đủ 4 ký tự!");
     }
     else {
-
+        call_ketqua();
         $("#_imtbi_result").html("<div class='panel'><img src='http://rpg.drivethrustuff.com/shared_images/ajax-loader.gif' style='width:150px;'/></div>");
         $.ajax({
             url: "/MBTIs/Details",
@@ -95,6 +148,7 @@ function _fgetmbti() {
             type: "get",
 
             success: function (html) {
+                
                 $("#_imtbi_result").html(html);
             }
         });

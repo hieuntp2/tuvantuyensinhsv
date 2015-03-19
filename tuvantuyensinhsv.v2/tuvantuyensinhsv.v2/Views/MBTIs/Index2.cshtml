@@ -3,135 +3,104 @@
 @{
     ViewBag.Title = "MBTI-Ngành/Nghề";
     Layout = "~/Views/Shared/_Layout.cshtml";
-} 
-
+}
 <div class="row">
     <div class="col-lg-12">
-
-           
-
-
+        <!-- /.panel-heading -->
         <div class="box box-warning">
             <div class="box-header with-border">
-                <h3 class="box-title">Title</h3>               
+                <h3 class="box-title">MBTI</h3>
             </div>
-            <div class="box-body">
+            <div class="box-body" id="_langViet">
+                <!-- Nav tabs -->
                 <div class="nav-tabs-custom">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Tab 1</a></li>
-                        <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Tab 2</a></li>                      
+                        <li class="active" id="li_step0">
+                            <a href="#intro" data-toggle="tab">0. Giới thiệu</a>
+                        </li>
+                        <li id="li_stepkiemtra">
+                            <a href="#kiemtra" data-toggle="tab">1. Kiểm tra</a>
+                        </li>
+
+                        <li id="li_step1">
+                            <a href="#home" data-toggle="tab"> E/I </a>
+                        </li>
+                        <li id="li_step2">
+                            <a href="#profile" data-toggle="tab"> S/N </a>
+                        </li>
+                        <li id="li_step3">
+                            <a href="#messages" data-toggle="tab"> T/F </a>
+                        </li>
+                        <li id="li_step4">
+                            <a href="#settings" data-toggle="tab"> J/P</a>
+                        </li>
+                        <li id="li_stepketqua">
+                            <a href="#ketqua" data-toggle="tab">2. Kết quả</a>
+                        </li>
                     </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="tab_1">
-                            <b>How to use:</b>
-                            <p>
-                                Exactly like the original bootstrap tabs except you should use
-                                the custom wrapper <code>.nav-tabs-custom</code> to achieve this style.
-                            </p>
-                            A wonderful serenity has taken possession of my entire soul,
-                            like these sweet mornings of spring which I enjoy with my whole heart.
-                            I am alone, and feel the charm of existence in this spot,
-                            which was created for the bliss of souls like mine. I am so happy,
-                            my dear friend, so absorbed in the exquisite sense of mere tranquil existence,
-                            that I neglect my talents. I should be incapable of drawing a single stroke
-                            at the present moment; and yet I feel that I never was a greater artist than now.
-                        </div><!-- /.tab-pane -->
-                        <div class="tab-pane" id="tab_2">
-                            The European languages are members of the same family. Their separate existence is a myth.
-                            For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
-                            in their grammar, their pronunciation and their most common words. Everyone realizes why a
-                            new common language would be desirable: one could refuse to pay expensive translators. To
-                            achieve this, it would be necessary to have uniform grammar, pronunciation and more common
-                            words. If several languages coalesce, the grammar of the resulting language is more simple
-                            and regular than that of the individual languages.
-                        </div><!-- /.tab-pane -->
-                    </div><!-- /.tab-content -->
-                </div><!-- nav-tabs-custom -->
-            </div><!-- /.box-body -->
-        </div>
-    </div>
-</div>
-
-
-<div class="col-md-4 col-md-offset-4">
-    <div class="panel panel-default">
-        <div class="panel-body" style="padding: 15px; margin-top: 0px; padding-top: 0px; padding-bottom: 0px;">
-            <h2 style="margin-top: 10px;">Phân loại tính cách MBTI</h2>
-        </div>
-    </div>
-</div>
-
-<div class="panel panel-default col-lg-12">
-    <!-- /.panel-heading -->
-    <div class="panel-body">
-  
-
-        <div class="panel-body" id="_langViet">
-            
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs">
-                <li class="active" id="li_step0">
-                    <a href="#intro" data-toggle="tab">0. Giới thiệu</a>
-                </li>
-                <li id="li_step1">
-                    <a href="#home" data-toggle="tab">1. Xu hướng Tự nhiên</a>
-                </li>
-                <li id="li_step2">
-                    <a href="#profile" data-toggle="tab">2. Tìm hiểu và Nhận thức</a>
-                </li>
-                <li id="li_step3">
-                    <a href="#messages" data-toggle="tab">3. Quyết định và chọn lựa</a>
-                </li>
-                <li id="li_step4">
-                    <a href="#settings" data-toggle="tab">4. Cách thức và Hành động</a>
-                </li>
-            </ul>
-            <br />
-
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div class="tab-pane fade in active" id="intro">
-                    @Html.Partial("~/views/mbtis/_introductMBTI.cshtml")
                 </div>
-                <div class="tab-pane fade" id="home">
-                    @Html.Partial("~/views/mbtis/_extraversionintroversion.cshtml")
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div class="tab-pane active" id="intro">
+                        @Html.Partial("~/views/mbtis/_introductMBTI.cshtml")
+                    </div>
+                    <div class="tab-pane" id="kiemtra">
+                        @Html.Partial("~/views/mbtis/_kiemtraMBTI.cshtml")
+                    </div>
+                    <div class="tab-pane" id="home">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Xu hướng Tự nhiên</h3>
+                        </div>
+                        @Html.Partial("~/views/mbtis/_extraversionintroversion.cshtml")
+                    </div>
+                    <div class="tab-pane" id="profile">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Tìm hiểu và Nhận thức</h3>
+                        </div>
+                        @Html.Partial("~/views/mbtis/_SensingINtution.cshtml")
+                    </div>
+                    <div class="tab-pane" id="messages">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Quyết định và chọn lựa</h3>
+                        </div>
+                        @Html.Partial("~/views/mbtis/_ThinkingFeeling.cshtml")
+                    </div>
+                    <div class="tab-pane" id="settings">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Cách thức và Hành động</h3>
+                        </div>
+                        @Html.Partial("~/views/mbtis/_JudgmentPerception.cshtml")
+                    </div>
+
+                    <div class="tab-pane" id="ketqua">
+                        <div id="_imtbi_result">
+                            <p>Hãy chọn đủ 4 ký tự phù hợp tính cách của mình, sau đó nhấn nút "Kết quả" để nhận được kết quả phù hợp.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="tab-pane fade" id="profile">
-                    @Html.Partial("~/views/mbtis/_SensingINtution.cshtml")
-                </div>
-                <div class="tab-pane fade" id="messages">
-                    @Html.Partial("~/views/mbtis/_ThinkingFeeling.cshtml")
-                </div>
-                <div class="tab-pane fade" id="settings">
-                    @Html.Partial("~/views/mbtis/_JudgmentPerception.cshtml")
+
+                <p style="float:right;">(Nguồn: www.myersbriggs.org và www.tgm.vn)</p>
+            </div>
+            <div class="box-footer">
+                <div class="row">
+                    <div class="col-md-4 col-md-offset-5">
+                        <button onclick="call_EI()" id="result_step_1" value="" style="width:50px; height:50px; opacity"></button>
+                        <button onclick="call_SN()" id="result_step_2" value="" style="width:50px; height:50px;"></button>
+                        <button onclick="call_TF()" id="result_step_3" value="" style="width:50px; height:50px;"></button>
+                        <button onclick="call_JP()" id="result_step_4" value="" style="width:50px; height:50px;"></button>
+                    </div>
+                    <div class="col-md-4 col-md-offset-5">
+                        <button value="" style="width:210px; height:50px;" onclick="_fgetmbti()">Kết quả</button>
+                    </div>
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-4 col-md-offset-5">
-                    <button onclick="call_EI()" id="result_step_1" value="" style="width:50px; height:50px; opacity"></button>
-                    <button onclick="call_SN()" id="result_step_2" value="" style="width:50px; height:50px;"></button>
-                    <button onclick="call_TF()" id="result_step_3" value="" style="width:50px; height:50px;"></button>
-                    <button onclick="call_JP()" id="result_step_4" value="" style="width:50px; height:50px;"></button>
-                </div>
-
-                <div class="col-md-4 col-md-offset-5">
-                    <button value="" style="width:210px; height:50px;" onclick="_fgetmbti()">Kết quả</button>
-                </div>
-            </div>
         </div>
-      
-        <p style="float:right;">(Nguồn: www.myersbriggs.org và www.tgm.vn)</p>
+        <!-- /.panel-body -->
     </div>
-    <!-- /.panel-body -->
 </div>
-
 <br />
-
-<div class="row col-lg-12">
-    <div id="_imtbi_result">
-    </div>
-</div>
 
 <!-- Button trigger modal -->
 <!-- Modal -->
@@ -164,4 +133,4 @@
         </div>
     </div>
 </div>
-<script src="~/content/js/mbtiscript.js"></script>
+<script src="~/scripts/mbtiscript.js"></script>

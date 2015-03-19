@@ -2,7 +2,6 @@
     ViewBag.Title = "Index";
 }
 
-
 <div class="row">
     <!--Slide-->
     <div class="col-lg-6">
@@ -98,25 +97,6 @@
 </section>
 <hr />
 
-@*<div class="row connectedSortable ui-sortable" ng-app="homepage">
-    <div ng-controller="indexcontroller as controller" ng-init="controller.init()" id="_home_content">
-        <div class="col-lg-4" ng-repeat="post in controller.posts | orderBy: '-ngaydang'" ng-click="controller.postclick(post.id, post.loai)">
-            <!-- Info box -->
-            <div ng-class="post.loai === 'q'? 'box box-warning': 'box box-info'" style="cursor:pointer;">
-                <div class="box-header">
-                    <h3 class="box-title">{{post.tieude}}</h3>
-                </div>
-                <div class="box-body">
-                    <p>{{post.noidung}}</p>
-                </div><!-- /.box-body -->
-                <div class="box-footer">
-                    <code>{{post.ngaydang}}</code>
-                </div><!-- /.box-footer-->
-            </div><!-- /.box -->
-        </div>
-    </div>
-</div>*@
-
 <div class="row">
     <div class="col-lg-12" ng-app="homepage">
         <ul class="timeline" ng-controller="indexcontroller as controller" ng-init="controller.init()" id="_home_content">
@@ -124,7 +104,7 @@
             <li style="cursor:pointer;" ng-repeat="post in controller.posts | orderBy: '-ngaydang'" ng-click="controller.postclick(post.id, post.loai)">
                 <i ng-class="post.loai === 'q'? 'ion ion-chatbubbles bg-green': 'ion ion-compose bg-red'"></i>
                 <div class="timeline-item">
-                    <span class="time"><i class="fa fa-clock-o"></i>{{post.ngaydang}}</span>
+                    <span class="time"> <i class="fa fa-clock-o"></i>{{post.ngaydang}} </span>
                     <h3 class="timeline-header"><b>{{post.tieude}}</b></h3>
                     <div class="timeline-body">
                         {{post.noidung}}
